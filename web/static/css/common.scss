@@ -128,6 +128,10 @@ a {
 	font-size: 15px;
 	font-weight: 600;
 	font-family: "Raleway";
+
+	&:hover {
+		background-color: #021e2c;
+	}
 }
 
 .icon-btn {
@@ -178,11 +182,16 @@ a {
 		border: 2px solid var(--primary);
 		border-radius: 5px;
 		background-color: var(--primary-light-bg);
+		color: var(--primary);
 		outline: none;
 		padding: 10px;
 		font-size: 15px;
 		margin-bottom: 3px;
 		transition: all 300ms ease-out;
+
+		&:disabled {
+			border-color: var(--primary-light-bg);
+		}
 
 		&:focus {
 			background-color: white;

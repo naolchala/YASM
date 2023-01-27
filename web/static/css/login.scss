@@ -48,15 +48,20 @@
 
 		.login-btn {
 			font-size: 16px;
-			&:hover {
-				background-color: var(--primary-light);
-			}
 		}
 		.create-btn {
 			font-family: "Raleway";
 			font-weight: 500;
+			margin-top: 10px;
+			padding: 10px;
+			background-color: transparent;
+			text-align: center;
+			color: var(--primary);
+			border-radius: 5px;
+			cursor: pointer;
 
 			&:hover {
+				background-color: var(--primary-light-bg);
 				text-decoration: underline;
 			}
 		}
@@ -80,5 +85,33 @@
 			font-size: 8px;
 			color: var(--danger-light);
 		}
+	}
+}
+
+.profile-chip {
+	width: 50%;
+	display: flex;
+	align-items: center;
+	padding: 15px;
+	background-color: var(--primary-light-bg);
+	border-radius: 40px;
+
+	img {
+		height: 40px;
+		width: 40px;
+		border-radius: 100%;
+		object-fit: cover;
+		margin-right: 20px;
+	}
+
+	.name {
+		font-family: "raleway";
+		font-weight: bold;
+		color: var(--primary);
+	}
+
+	.email {
+		font-size: 14px;
+		color: var(--primary);
 	}
 }
