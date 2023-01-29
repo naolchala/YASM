@@ -58,7 +58,6 @@
 }
 .form-container .login-form .create-btn:hover {
   background-color: var(--primary-light-bg);
-  text-decoration: underline;
 }
 .form-container .footer * {
   margin: 0 5px;
