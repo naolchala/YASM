@@ -120,6 +120,7 @@
 }
 .container .side-bar .menu-item {
   cursor: pointer;
+  position: relative;
   display: flex;
   align-items: center;
   padding: 10px;
@@ -150,6 +151,52 @@
 .container .side-bar .menu-item span {
   font-family: "Raleway";
   font-weight: bold;
+}
+.container .side-bar .menu-item:has(#addMenu:checked) {
+  background-color: var(--primary-light);
+  color: white;
+}
+.container .side-bar .menu-item #addMenu {
+  display: none;
+}
+.container .side-bar .menu-item #addMenu:checked + .sub-menu {
+  height: 150px;
+}
+.container .side-bar .menu-item .sub-menu {
+  overflow: hidden;
+  position: absolute;
+  background-color: white;
+  z-index: 1000;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  border-radius: 10px;
+  left: 50%;
+  height: 0;
+  transition: height 200ms ease-out;
+}
+.container .side-bar .menu-item .sub-menu .sub-menu-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 200px;
+  padding: 10px;
+  gap: 5px;
+}
+.container .side-bar .menu-item .sub-menu .sub-menu-item {
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  font-weight: normal;
+  gap: 4px;
+}
+.container .side-bar .menu-item .sub-menu .sub-menu-item i {
+  font-size: 20px;
+}
+.container .side-bar .menu-item .sub-menu .sub-menu-item:hover {
+  color: white;
+  background-color: var(--primary-light);
 }
 .container .side-bar .footer {
   color: var(--primary-light);
