@@ -1,9 +1,102 @@
-.img-container img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.img-container img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .form-container {
-    overflow: auto;
+  overflow: auto;
+}
+.form-container .title {
+  font-weight: 900;
+  font-size: 64px;
+  margin-bottom: 30px;
+}
+.form-container .line-n-title {
+  margin-bottom: 30px;
+}
+.form-container .line-n-title .line {
+  flex: 1;
+  display: block;
+  height: 1px;
+  background-color: var(--primary);
+  width: 100px;
+}
+.form-container .line-n-title .page-title {
+  margin: 0 30px;
+  font-weight: normal;
+}
+.form-container .login-form {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+.form-container .login-form .forgot-link {
+  font-size: 14px;
+  align-self: flex-end;
+  color: var(--primary);
+  transition: all 200ms ease-out;
+  border-bottom: 1px solid transparent;
+}
+.form-container .login-form .forgot-link:hover {
+  border-bottom-color: var(--primary-light);
+}
+.form-container .login-form .login-btn {
+  font-size: 16px;
+}
+.form-container .login-form .create-btn {
+  font-family: "Raleway";
+  font-weight: 500;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: transparent;
+  text-align: center;
+  color: var(--primary);
+  border-radius: 5px;
+  cursor: pointer;
+}
+.form-container .login-form .create-btn:hover {
+  background-color: var(--primary-light-bg);
+}
+.form-container .footer * {
+  margin: 0 5px;
+}
+.form-container .footer a {
+  font-size: 14px;
+  color: var(--danger-light);
+  border-bottom: 1px solid transparent;
+}
+.form-container .footer a:hover {
+  border-bottom-color: var(--danger-light);
+}
+.form-container .footer i {
+  font-size: 8px;
+  color: var(--danger-light);
+}
+
+.profile-chip {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  background-color: var(--primary-light-bg);
+  border-radius: 40px;
+}
+.profile-chip img {
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-right: 20px;
+}
+.profile-chip .name {
+  font-family: "raleway";
+  font-weight: bold;
+  color: var(--primary);
+}
+.profile-chip .email {
+  font-size: 14px;
+  color: var(--primary);
 }

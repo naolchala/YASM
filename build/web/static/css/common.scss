@@ -1,0 +1,261 @@
+* {
+	box-sizing: border-box;
+	font-family: "Rubik", "Raleway", sans;
+}
+
+:root {
+	/* Colors */
+	--primary: #003049;
+	--primary-light: #669bbc;
+	--danger-light: #c1121f;
+	--danger: #780000;
+
+	/* Backgrounds */
+	--primary-light-bg: rgba(0, 48, 73, 0.1);
+	--gray-bg: rgba(248, 248, 248, 1);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	padding: 0;
+	font-family: "Raleway", "Inter", sans;
+	color: var(--primary);
+}
+
+body.full-page {
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100vh;
+}
+
+a {
+	text-decoration: none;
+	color: var(--primary-light);
+	transition: all 300ms ease-out;
+}
+
+.btn {
+	border: none;
+	background: transparent;
+	transition: all 300ms ease-out;
+}
+
+.flex {
+	display: flex;
+}
+
+.flex-row {
+	flex-direction: row;
+}
+
+.flex-col {
+	flex-direction: column;
+}
+
+.flex-1 {
+	flex: 1;
+}
+
+.flex-wrap {
+	flex-wrap: wrap;
+}
+
+.justify-center {
+	justify-content: center;
+}
+
+.align-center {
+	align-items: center;
+}
+
+.text-center {
+	text-align: center;
+}
+
+/* Colors */
+.text-primary {
+	color: var(--primary);
+}
+
+.bg-primary {
+	background-color: var(--primary);
+}
+
+.bg-primary-light {
+	background-color: var(--primary-light);
+}
+
+.bg-primary-lighter {
+	background-color: var(--primary-light-bg);
+}
+
+.text-danger {
+	color: var(--danger);
+}
+
+.text-danger-light {
+	color: var(--danger-light);
+}
+
+.bg-danger {
+	background-color: var(--danger);
+}
+
+.bg-danger-light {
+	background-color: var(--danger-light);
+}
+
+.text-white {
+	color: white;
+}
+
+.bg-white {
+	background: white;
+}
+
+.btn-primary {
+	padding: 13px 16px;
+	background-color: var(--primary);
+	color: white;
+	outline: none;
+	border-radius: 4px;
+	font-size: 15px;
+	font-weight: 600;
+	font-family: "Raleway";
+
+	&:hover {
+		background-color: #021e2c;
+	}
+}
+
+.icon-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 100%;
+	width: 30px;
+	height: 30px;
+	transition: all 300ms ease-out;
+
+	&:hover {
+		background-color: var(--primary-light-bg);
+	}
+}
+
+.relative {
+	position: relative;
+}
+
+.absolute {
+	position: absolute;
+}
+
+.form-field {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 20px;
+	position: relative;
+
+	&.error {
+		.form-label {
+			color: var(--danger-light);
+		}
+		.form-input {
+			border-color: var(--danger-light);
+		}
+	}
+
+	.form-label {
+		font-family: "Raleway";
+		font-weight: 500;
+		color: var(--primary);
+		margin-bottom: 5px;
+	}
+
+	.form-input {
+		border: 2px solid var(--primary);
+		border-radius: 5px;
+		background-color: var(--primary-light-bg);
+		color: var(--primary);
+		outline: none;
+		padding: 10px;
+		font-size: 15px;
+		margin-bottom: 3px;
+		transition: all 300ms ease-out;
+
+		&:disabled {
+			border-color: var(--primary-light-bg);
+		}
+
+		&:focus {
+			background-color: white;
+		}
+	}
+
+	#showBtn {
+		position: absolute;
+		font-size: 20px;
+		right: 10px;
+		bottom: 50%;
+		transform: translateY(50%);
+		color: var(--primary);
+	}
+
+	.form-error {
+		font-size: 13px;
+		color: var(--danger-light);
+	}
+}
+
+$spaceamounts: (0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 75, 100);
+$sides: (
+	"": "all",
+	"t": "top",
+	"b": "bottom",
+	"l": "left",
+	"r": "right",
+);
+
+@each $space in $spaceamounts {
+	@each $prefix, $value in $sides {
+		$property: if($prefix == "", "", -#{$value});
+		.m#{$prefix}#{$space} {
+			margin#{$property}: #{$space}px !important;
+		}
+		.p#{$prefix}#{$space} {
+			padding#{$property}: #{$space}px !important;
+		}
+	}
+	.br#{$space} {
+		border-radius: #{$space}px;
+	}
+
+	.my#{$space} {
+		margin-top: #{$space}px;
+		margin-bottom: #{$space}px;
+	}
+	.mx#{$space} {
+		margin-left: #{$space}px;
+		margin-right: #{$space}px;
+	}
+
+	.py#{$space} {
+		padding-top: #{$space}px;
+		padding-bottom: #{$space}px;
+	}
+	.px#{$space} {
+		padding-left: #{$space}px;
+		padding-right: #{$space}px;
+	}
+
+	.flex-gap-#{$space} {
+		gap: #{$space}px;
+	}
+}
