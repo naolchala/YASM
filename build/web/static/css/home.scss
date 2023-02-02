@@ -131,6 +131,7 @@
 
 		.menu-item {
 			cursor: pointer;
+			position: relative;
 			display: flex;
 			align-items: center;
 			padding: 10px;
@@ -166,6 +167,60 @@
 			span {
 				font-family: "Raleway";
 				font-weight: bold;
+			}
+
+			&:has(#addMenu:checked) {
+				background-color: var(--primary-light);
+				color: white;
+			}
+
+			#addMenu {
+				display: none;
+
+				&:checked + .sub-menu {
+					height: 150px;
+				}
+			}
+
+			.sub-menu {
+				overflow: hidden;
+				position: absolute;
+				background-color: white;
+				z-index: 1000;
+				box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+				border-radius: 10px;
+				// top: 100%;
+				left: 50%;
+				height: 0;
+				transition: height 200ms ease-out;
+
+				.sub-menu-wrapper {
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					width: 200px;
+					padding: 10px;
+					gap: 5px;
+				}
+
+				.sub-menu-item {
+					padding: 10px;
+					border-radius: 8px;
+					font-size: 14px;
+					color: var(--primary);
+					display: flex;
+					align-items: center;
+					font-weight: normal;
+					gap: 4px;
+					i {
+						font-size: 20px;
+					}
+
+					&:hover {
+						color: white;
+						background-color: var(--primary-light);
+					}
+				}
 			}
 		}
 
@@ -407,6 +462,49 @@
 					}
 				}
 			}
+		}
+	}
+}
+
+.pagination {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	background-color: white;
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+		rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+	padding: 20px;
+	border-radius: 10px;
+	gap: 10px;
+
+	a {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		height: 40px;
+		width: 40px;
+		text-decoration: none;
+		background-color: white;
+		border: 2px solid var(--primary-light);
+		border-radius: 100%;
+		top: 0;
+		transition: all 200ms ease-out;
+
+		&:not(.active):hover {
+			top: -5px;
+			background-color: var(--primary-light);
+			color: white;
+		}
+
+		&.active {
+			width: 50px;
+			height: 50px;
+			border-color: var(--primary);
+			background-color: var(--primary);
+			color: white;
 		}
 	}
 }

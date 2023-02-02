@@ -160,12 +160,6 @@ a {
   margin-bottom: 20px;
   position: relative;
 }
-.form-field.error .form-label {
-  color: var(--danger-light);
-}
-.form-field.error .form-input {
-  border-color: var(--danger-light);
-}
 .form-field .form-label {
   font-family: "Raleway";
   font-weight: 500;
@@ -200,6 +194,16 @@ a {
 .form-field .form-error {
   font-size: 13px;
   color: var(--danger-light);
+}
+.form-field.error .form-label {
+  color: var(--danger-light);
+}
+.form-field.error .form-input {
+  border-color: var(--danger-light);
+  background-color: rgba(193, 18, 30, 0.1098039216);
+}
+.form-field.error .form-input:focus {
+  background-color: transparent;
 }
 
 .m0 {

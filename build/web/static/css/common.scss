@@ -163,15 +163,6 @@ a {
 	margin-bottom: 20px;
 	position: relative;
 
-	&.error {
-		.form-label {
-			color: var(--danger-light);
-		}
-		.form-input {
-			border-color: var(--danger-light);
-		}
-	}
-
 	.form-label {
 		font-family: "Raleway";
 		font-weight: 500;
@@ -211,6 +202,20 @@ a {
 	.form-error {
 		font-size: 13px;
 		color: var(--danger-light);
+	}
+
+	&.error {
+		.form-label {
+			color: var(--danger-light);
+		}
+		.form-input {
+			border-color: var(--danger-light);
+			background-color: #c1121e1c;
+
+			&:focus {
+				background-color: transparent;
+			}
+		}
 	}
 }
 
