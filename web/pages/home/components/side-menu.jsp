@@ -1,11 +1,11 @@
 <aside class="side-bar">
-	<a href="#" class="menu-item selected">
+	<a href="." class="menu-item selected">
 		<div class="icon-container">
 			<i class="bx bxs-home-circle"></i>
 		</div>
 		<span>Home</span>
 	</a>
-	<a href="#" class="menu-item">
+	<a href="Explore" class="menu-item">
 		<div class="icon-container">
 			<i class="bx bxs-compass"></i>
 		</div>
@@ -35,7 +35,7 @@
 			</div>
 		</div>
 	</label>
-	<a href="#" class="menu-item">
+	<a href="FindFriends" class="menu-item">
 		<div class="icon-container">
 			<i class="bx bxs-user-plus"></i>
 		</div>
@@ -48,7 +48,7 @@
 		<span>About Us</span>
 	</a>
 	<div class="flex-1"></div>
-	<a class="menu-item selected">
+	<a href="ProfilePage" class="menu-item selected">
 		<div class="icon-container">
 			<i class="bx bxs-user-circle"></i>
 		</div>

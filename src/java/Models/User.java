@@ -58,13 +58,13 @@ public class User {
 		this.gender = rs.getString("gender");
 		this.profileUrl = rs.getString("profileUrl");
 	}
-	
+
 	public String getFullname() {
 		return this.firstName + " " + this.lastName;
 	}
-	
+
 	public String getProfileUrl() {
-		return "uploads/profile-pictures/" + this.profileUrl;
+		return "uploads/profile-pictures/" + (this.profileUrl == null ? "default.png" : this.profileUrl);
 	}
 
 	public static User login(String email, String password) throws SQLException, FormException {
@@ -110,13 +110,6 @@ public class User {
 
 	}
 
-//    public ArrayList<User> friends() {
-//	    
-//    }
-//    
-//    public ArrayList<User> friendRequests() {
-//	    
-//    }
 	public static ArrayList<User> findMany(Map<String, String> where) {
 		ArrayList<User> users = new ArrayList<User>();
 		StringBuilder sql = new StringBuilder("SELECT * FROM User WHERE ");
@@ -147,7 +140,7 @@ public class User {
 
 		return new User(rs);
 	}
-	
+
 	public static User findByEmail(String email) throws SQLException, UserDontExistException {
 		String sql = "SELECT * FROM User WHERE email=?";
 		PreparedStatement stmt = DBConnector.getPreparedStmt(sql);
@@ -161,7 +154,7 @@ public class User {
 
 		return new User(rs);
 	}
-	
+
 	public void updatePassword(String newPassword) throws SQLException {
 		String sql = "UPDATE User SET password=? WHERE id=?";
 		PreparedStatement stmt = DBConnector.getPreparedStmt(sql);
@@ -169,4 +162,84 @@ public class User {
 		stmt.setString(2, this.id);
 		stmt.executeUpdate();
 	}
+
+	public ArrayList<User> getFriends() throws SQLException {
+		ArrayList<User> friends = new ArrayList<>();
+		String sql = "SELECT User.* FROM User, FriendRequest "
+			+ "WHERE (FriendRequest.toId=? AND FriendRequest.fromId = User.id) "
+			+ "OR (FriendRequest.fromId=? AND FriendRequest.toId = User.id) "
+			+ "AND FriendRequest.status = \"ACCEPTED\" "
+			+ "ORDER BY FriendRequest.datetime DESC";
+
+		PreparedStatement stmt = DBConnector.getPreparedStmt(sql);
+		stmt.setString(1, this.id);
+		stmt.setString(2, this.id);
+		ResultSet rs = stmt.executeQuery();
+
+		while (rs.next()) {
+			friends.add(new User(rs));
+		}
+
+		return friends;
+	}
+
+	public ArrayList<User> getFriendRequests() throws SQLException {
+		ArrayList<User> requests = new ArrayList<>();
+		String sql = "SELECT User.* FROM User, FriendRequest "
+			+ "WHERE FriendRequest.status='WAITING' AND FriendRequest.toId = ? AND FriendRequest.fromId = User.id;";
+		PreparedStatement stmt = DBConnector.getPreparedStmt(sql);
+		stmt.setString(1, this.id);
+		ResultSet rs = stmt.executeQuery();
+		while (rs.next()) {
+			requests.add(new User(rs));
+		}
+		return requests;
+	}
+
+	public ArrayList<User> getRandomFriendSuggestion() throws SQLException {
+		String sql = "SELECT User.id FROM User, FriendRequest "
+			+ "WHERE (FriendRequest.toId=? AND FriendRequest.fromId = User.id) "
+			+ "OR (FriendRequest.fromId=? AND FriendRequest.toId = User.id) "
+			+ "ORDER BY FriendRequest.datetime DESC";
+
+		PreparedStatement stmt = DBConnector.getPreparedStmt(sql);
+		stmt.setString(1, this.id);
+		stmt.setString(2, this.id);
+		ResultSet rs = stmt.executeQuery();
+
+		ArrayList<String> exclusionList = new ArrayList<>();
+
+		while (rs.next()) {
+			exclusionList.add(rs.getString("id"));
+		}
+
+		StringBuilder excludeIn = new StringBuilder();
+		boolean first = true;
+		for (String id : exclusionList) {
+			if (!first) {
+				excludeIn.append(',');
+			}
+			excludeIn.append("'" + id + "'");
+			first = false;
+		}
+
+		sql = "SELECT * FROM User WHERE id NOT IN (" + excludeIn.toString() + ") AND id != ? ORDER BY RAND() LIMIT 10 ";
+		stmt = DBConnector.getPreparedStmt(sql);
+		stmt.setString(1, this.id);
+		
+		ArrayList<User> randList = new ArrayList<User>();
+
+		rs = stmt.executeQuery();
+
+		while (rs.next()) {
+			randList.add(new User(rs));
+		}
+
+		return randList;
+	}
+
+	public void sendFriendRequest(String userId) throws SQLException {
+		new FriendRequest(id, userId).save();
+	}
+
 }

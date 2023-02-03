@@ -1,5 +1,6 @@
 package Models;
 
+import Models.Constants.PostTypes;
 import java.util.UUID;
 
 public class Blog extends Post {

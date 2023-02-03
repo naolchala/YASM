@@ -4,6 +4,7 @@
  */
 package Models;
 
+import Models.Constants.PostTypes;
 import java.sql.*;
 import java.time.Instant;
 import java.util.UUID;

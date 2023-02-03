@@ -119,7 +119,13 @@
   display: flex;
   flex-direction: column;
   overflow: auto;
-  padding: 20px;
+  padding: 30px;
+}
+.container .profile-container .profile-container-wrapper {
+  background-color: white;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+  padding: 40px;
+  border-radius: 20px;
 }
 .container .profile-container .img-container {
   display: flex;
@@ -149,8 +155,7 @@
 .container .profile-container .basic-info .basic-info-field {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  gap: 40px;
+  gap: 20px;
 }
 .container .side-bar {
   flex: 2;
@@ -488,6 +493,10 @@
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 40px 30px;
   overflow: auto;
+}
+.friend-requests-container .friends-list.empty {
+  grid-template-columns: 1fr;
+  padding: 40px;
 }
 .friend-requests-container .friends-list .friend-item {
   display: flex;

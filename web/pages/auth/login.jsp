@@ -16,8 +16,7 @@
 	    <img src="static/images/login_page.jpg" alt="" />
 	</div>
 	<div
-		class="form-container flex-1 flex flex-col align-center justify-center relative"
-		>
+		class="form-container flex-1 flex flex-col align-center justify-center relative">
 	    <h1 class="title mt75">YASM</h1>
 	    <div class="line-n-title flex flex-row align-center">
 		<div class="line"></div>
@@ -47,7 +46,7 @@
 		    </span> 
 		    <% }%>
 		</div>
-		<div class='form-field <%= ex.getElement() == "password" ? "error" : "" %>'>
+		<div class='form-field <%= ex.getElement() == "password" ? "error" : ""%>'>
 		    <span class="form-label">Password</span>
 		    <div class="relative">
 			<input
@@ -61,12 +60,12 @@
 			    <i class="bx bxs-show"></i>
 			</button>
 		    </div>
-		     <% if (ex.getElement() == "password") {%>
+		    <% if (ex.getElement() == "password") {%>
 		    <span class="form-error">
 			<%= ex.getMessage()%>
 		    </span> 
 		    <% }%>
-		    
+
 		</div>
 		<a href="ForgetPassword" class="forgot-link"
 		   >Forgot Password?</a

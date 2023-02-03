@@ -20,6 +20,26 @@
         <servlet-name>ChangePassword</servlet-name>
         <servlet-class>Servlets.Auth.ChangePassword</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FindFriends</servlet-name>
+        <servlet-class>Servlet.Friends.FindFriends</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProfilePage</servlet-name>
+        <servlet-class>Servlet.Profile.ProfilePage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SendRequest</servlet-name>
+        <servlet-class>Servlet.Friends.SendRequest</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>Servlets.Auth.Logout</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AcceptRequest</servlet-name>
+        <servlet-class>Servlet.Friends.AcceptRequest</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Index</servlet-name>
         <url-pattern>/</url-pattern>
@@ -51,9 +71,25 @@
         <servlet-name>ChangePassword</servlet-name>
         <url-pattern>/ChangePassword</url-pattern>
     </servlet-mapping>
-    <session-config>
-        <session-timeout>
-            30
-        </session-timeout>
-    </session-config>
+    <servlet-mapping>
+        <servlet-name>FindFriends</servlet-name>
+        <url-pattern>/FindFriends</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProfilePage</servlet-name>
+        <url-pattern>/ProfilePage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SendRequest</servlet-name>
+        <url-pattern>/SendRequest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/Logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AcceptRequest</servlet-name>
+        <url-pattern>/AcceptRequest</url-pattern>
+    </servlet-mapping>
+
 </web-app>
