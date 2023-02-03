@@ -5,112 +5,20 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>YASM</title>
-		<link rel="stylesheet" href="../../static/css/icons/css/boxicons.css" />
-		<link rel="stylesheet" href="../../static/css/fonts.css" />
-		<link rel="stylesheet" href="../../static/css/common.css" />
-		<link rel="stylesheet" href="../../static/css/home.css" />
+		<link rel="stylesheet" href="static/css/icons/css/boxicons.css" />
+		<link rel="stylesheet" href="static/css/fonts.css" />
+		<link rel="stylesheet" href="static/css/common.css" />
+		<link rel="stylesheet" href="static/css/home.css" />
 	</head>
 	<body class="full-page flex flex-col">
-		<div class="header">
-			<h1 class="title">YASM</h1>
-			<div class="search-field-container">
-				<div class="search-field">
-					<input placeholder="Search" type="text" />
-					<button class="btn icon-btn search-btn">
-						<i class="bx bx-search-alt"></i>
-					</button>
-				</div>
-			</div>
-			<div class="profile-tag">
-				<div class="img-container">
-					<i class="bx bxs-user-circle"></i>
-				</div>
-				<div class="name-col flex flex-col">
-					<span class="name">John Doe</span>
-					<span class="email">johndoe@gmail.com</span>
-				</div>
-				<button class="btn icon-btn logout-btn">
-					<i class="bx bx-log-in"></i>
-				</button>
-			</div>
-		</div>
+		<%@include file="components/navbar.jsp" %>
 		<div class="container flex-1">
-			<aside class="side-bar">
-				<a href="#" class="menu-item selected">
-					<div class="icon-container">
-						<i class="bx bxs-home-circle"></i>
-					</div>
-					<span>Home</span>
-				</a>
-				<a href="#" class="menu-item">
-					<div class="icon-container">
-						<i class="bx bxs-compass"></i>
-					</div>
-					<span>Explore</span>
-				</a>
-
-				<label class="menu-item">
-					<div class="icon-container">
-						<i class="bx bxs-file-plus"></i>
-					</div>
-					<span>Add Post</span>
-					<input type="checkbox" name="add-menu" id="addMenu" />
-					<div class="sub-menu">
-						<div class="sub-menu-wrapper">
-							<a href="#story" class="sub-menu-item">
-								<i class="bx bx-image"></i>
-								Add Story
-							</a>
-							<a href="#blog" class="sub-menu-item">
-								<i class="bx bxs-news"></i>
-								Add Blog</a
-							>
-							<a href="#poll" class="sub-menu-item">
-								<i class="bx bx-poll"></i>
-								Add Poll</a
-							>
-						</div>
-					</div>
-				</label>
-				<a href="#" class="menu-item">
-					<div class="icon-container">
-						<i class="bx bxs-user-plus"></i>
-					</div>
-					<span>Friends</span>
-				</a>
-				<a class="menu-item">
-					<div class="icon-container">
-						<i class="bx bxs-face"></i>
-					</div>
-					<span>About Us</span>
-				</a>
-				<div class="flex-1"></div>
-				<a class="menu-item selected">
-					<div class="icon-container">
-						<i class="bx bxs-user-circle"></i>
-					</div>
-					<span>Profile</span>
-				</a>
-				<div class="footer flex flex-col flex-wrap align-center py20">
-					<div class="flex flex-row align-center">
-						<a href="#">YASM (Yet Another Social Media)</a>
-					</div>
-					<div
-						class="flex flex-row align-center flex-wrap justify-center flex-gap-10"
-					>
-						<a href="#">About us</a>
-						<i class="bx bxs-circle"></i>
-						<a href="#">Terms and Services</a>
-						<i class="bx bxs-circle"></i>
-						<a href="#">Copyright</a>
-					</div>
-				</div>
-			</aside>
+		    <%@include file="components/side-menu.jsp" %>
 			<main class="posts-container">
 				<div class="post story">
 					<header>
 						<img
-							src="../../static/images/profile-picture.jpg"
+							src="static/images/profile-picture.jpg"
 							alt="person"
 						/>
 						<div class="text-cont">
@@ -119,7 +27,7 @@
 						</div>
 					</header>
 					<article>
-						<img src="../../static/images/login_page.jpg" alt="" />
+						<img src="static/images/login_page.jpg" alt="" />
 						<p class="caption">
 							Lorem ipsum dolor sit amet consectetur adipisicing
 							elit. Inventore quasi ducimus molestiae iure iste
@@ -153,7 +61,7 @@
 				<div class="post story">
 					<header>
 						<img
-							src="../../static/images/profile-picture.jpg"
+							src="static/images/profile-picture.jpg"
 							alt="person"
 						/>
 						<div class="text-cont">
@@ -162,7 +70,7 @@
 						</div>
 					</header>
 					<article>
-						<img src="../../static/images/login_page.jpg" alt="" />
+						<img src="static/images/login_page.jpg" alt="" />
 						<!-- <p class="caption"></p> -->
 					</article>
 					<footer>
@@ -190,7 +98,7 @@
 				<div class="post blog">
 					<header>
 						<img
-							src="../../static/images/profile-picture.jpg"
+							src="static/images/profile-picture.jpg"
 							alt="person"
 						/>
 						<div class="text-cont">
@@ -238,7 +146,7 @@
 				<div class="post poll">
 					<header>
 						<img
-							src="../../static/images/profile-picture.jpg"
+							src="static/images/profile-picture.jpg"
 							alt="person"
 						/>
 						<div class="text-cont">
@@ -300,7 +208,7 @@
 				<div class="post poll voted">
 					<header>
 						<img
-							src="../../static/images/profile-picture.jpg"
+							src="static/images/profile-picture.jpg"
 							alt="person"
 						/>
 						<div class="text-cont">
@@ -365,47 +273,7 @@
 					</a>
 				</div>
 			</main>
-			<aside class="notifications-container">
-				<h1 class="title">Recent Notifications</h1>
-				<div class="flex flex-col flex-gap-10 pt20">
-					<div class="notification-item unseen">
-						<div class="icon-container">
-							<i class="bx bxs-user-check"></i>
-						</div>
-						<div class="flex flex-col flex-1">
-							<span class="desc">
-								<b class="name">Ester Horward</b> sent you a
-								friend request
-							</span>
-							<span class="time"> 2 hours ago </span>
-						</div>
-					</div>
-					<div class="notification-item">
-						<div class="icon-container">
-							<i class="bx bxs-like"></i>
-						</div>
-						<div class="flex flex-col flex-1">
-							<span class="desc">
-								<b class="name">Jane Doe</b>
-								Liked your post
-							</span>
-							<span class="time"> 3 hours ago </span>
-						</div>
-					</div>
-					<div class="notification-item">
-						<div class="icon-container">
-							<i class="bx bxs-comment"></i>
-						</div>
-						<div class="flex flex-col flex-1">
-							<span class="desc">
-								<b class="name">Brian Griffin</b>
-								Commented on your post
-							</span>
-							<span class="time"> Yesterday </span>
-						</div>
-					</div>
-				</div>
-			</aside>
+		    <%@include file="components/notification.jsp" %>
 		</div>
 	</body>
 	<script>

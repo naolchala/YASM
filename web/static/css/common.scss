@@ -219,6 +219,14 @@ a {
 	}
 }
 
+.avatar {
+	--size: 80px;
+	width: var(--size);
+	height: var(--size);
+	object-fit: cover;
+	border-radius: 100%;
+}
+
 $spaceamounts: (0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 75, 100);
 $sides: (
 	"": "all",

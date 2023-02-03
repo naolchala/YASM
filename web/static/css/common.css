@@ -206,6 +206,15 @@ a {
   background-color: transparent;
 }
 
+.avatar {
+  --size: 80px;
+  width: var(--size);
+  height: var(--size);
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 100%;
+}
+
 .m0 {
   margin: 0px !important;
 }
