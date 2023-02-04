@@ -3,15 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/naol/Documents/Projects/Advanced%20Programming/YASM/src/java/Servlet/Friends/FindFriends.java</file>
-            <file>file:/home/naol/Documents/Projects/Advanced%20Programming/YASM/src/java/Models/User.java</file>
-            <file>file:/home/naol/Documents/Projects/Advanced%20Programming/YASM/src/java/Utils/ServletUtils.java</file>
-            <file>file:/home/naol/Documents/Projects/Advanced%20Programming/YASM/src/java/Models/FriendRequest.java</file>
-            <file>file:/home/naol/Documents/Projects/Advanced%20Programming/YASM/src/java/Models/Notification.java</file>
-            <file>file:/home/naol/Documents/Projects/Advanced%20Programming/YASM/src/java/Servlets/Auth/Logout.java</file>
-            <file>file:/home/naol/Documents/Projects/Advanced%20Programming/YASM/src/java/Servlet/Friends/SendRequest.java</file>
+            <file>file:/home/naol/Documents/Projects/Advanced%20Programming/YASM/web/pages/home/profile/update-profile.jsp</file>
             <file>file:/home/naol/Documents/Projects/Advanced%20Programming/YASM/web/pages/home/friends.jsp</file>
-            <file>file:/home/naol/Documents/Projects/Advanced%20Programming/YASM/web/pages/home/components/navbar.jsp</file>
         </group>
     </open-files>
 </project-private>

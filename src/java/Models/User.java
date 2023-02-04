@@ -59,13 +59,7 @@ public class User {
 		this.profileUrl = rs.getString("profileUrl");
 	}
 
-	public String getFullname() {
-		return this.firstName + " " + this.lastName;
-	}
-
-	public String getProfileUrl() {
-		return "uploads/profile-pictures/" + (this.profileUrl == null ? "default.png" : this.profileUrl);
-	}
+	
 
 	public static User login(String email, String password) throws SQLException, FormException {
 		String sql = "SELECT * FROM User WHERE email=?";
@@ -109,60 +103,15 @@ public class User {
 		stmt.executeUpdate();
 
 	}
-
-	public static ArrayList<User> findMany(Map<String, String> where) {
-		ArrayList<User> users = new ArrayList<User>();
-		StringBuilder sql = new StringBuilder("SELECT * FROM User WHERE ");
-		boolean first = true;
-		for (Entry<String, String> e : where.entrySet()) {
-			if (!first) {
-				sql.append("AND ");
-			}
-			sql.append(e.getKey() + "=? ");
-			first = false;
-		}
-
-		Logger.getLogger(DBConnector.class.getName()).log(Level.INFO, sql.toString());
-
-		return users;
+	
+	public String getFullname() {
+		return this.firstName + " " + this.lastName;
 	}
 
-	public static User findById(String id) throws SQLException, UserDontExistException {
-		String sql = "SELECT * FROM User WHERE id=?";
-		PreparedStatement stmt = DBConnector.getPreparedStmt(sql);
-		stmt.setString(1, id);
-
-		ResultSet rs = stmt.executeQuery();
-
-		if (!rs.next()) {
-			throw new UserDontExistException();
-		}
-
-		return new User(rs);
+	public String getProfileUrl() {
+		return "uploads/profile-pictures/" + (this.profileUrl == null ? "default.png" : this.profileUrl);
 	}
-
-	public static User findByEmail(String email) throws SQLException, UserDontExistException {
-		String sql = "SELECT * FROM User WHERE email=?";
-		PreparedStatement stmt = DBConnector.getPreparedStmt(sql);
-		stmt.setString(1, email);
-
-		ResultSet rs = stmt.executeQuery();
-
-		if (!rs.next()) {
-			throw new UserDontExistException();
-		}
-
-		return new User(rs);
-	}
-
-	public void updatePassword(String newPassword) throws SQLException {
-		String sql = "UPDATE User SET password=? WHERE id=?";
-		PreparedStatement stmt = DBConnector.getPreparedStmt(sql);
-		stmt.setString(1, newPassword);
-		stmt.setString(2, this.id);
-		stmt.executeUpdate();
-	}
-
+	
 	public ArrayList<User> getFriends() throws SQLException {
 		ArrayList<User> friends = new ArrayList<>();
 		String sql = "SELECT User.* FROM User, FriendRequest "
@@ -226,7 +175,7 @@ public class User {
 		sql = "SELECT * FROM User WHERE id NOT IN (" + excludeIn.toString() + ") AND id != ? ORDER BY RAND() LIMIT 10 ";
 		stmt = DBConnector.getPreparedStmt(sql);
 		stmt.setString(1, this.id);
-		
+
 		ArrayList<User> randList = new ArrayList<User>();
 
 		rs = stmt.executeQuery();
@@ -237,9 +186,106 @@ public class User {
 
 		return randList;
 	}
+	
 
+	public void changeProfilePicture(String profileUrl) throws SQLException {
+		this.profileUrl = profileUrl;
+		String sql = "UPDATE User SET "
+			+ "profileUrl=?"
+			+ "WHERE id=?";
+
+		PreparedStatement stmt = DBConnector.getPreparedStmt(sql);
+		stmt.setString(1, this.profileUrl);
+		stmt.setString(2, this.id);
+		stmt.executeUpdate();
+
+	}
+	
+	public void updateName(String firstName, String lastName) throws SQLException {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		String sql = "UPDATE User SET firstName=?, lastName=? WHERE id=?";
+		PreparedStatement stmt = DBConnector.getPreparedStmt(sql);
+		stmt.setString(1, this.firstName);
+		stmt.setString(2, this.lastName);
+		stmt.setString(3, this.id);
+		stmt.executeUpdate();
+
+	}
+
+	public void updatePassword(String newPassword) throws SQLException {
+		this.password = newPassword;
+		String sql = "UPDATE User SET password=? WHERE id=?";
+		PreparedStatement stmt = DBConnector.getPreparedStmt(sql);
+		stmt.setString(1, this.password);
+		stmt.setString(2, this.id);
+		stmt.executeUpdate();
+
+	}
+	
+	public void updateSecurityQuestionAnswer(String secQuestion, String secAnswer) throws SQLException {
+		this.securityAnswer = secAnswer;
+		this.securityQuestion = secQuestion;
+		String sql = "UPDATE User SET securityQuestion=?,  securityAnswer=? WHERE id=?";
+		PreparedStatement stmt = DBConnector.getPreparedStmt(sql);
+		stmt.setString(1, this.securityQuestion);
+		stmt.setString(2, this.securityAnswer);
+		stmt.setString(3, this.id);
+		
+		stmt.executeUpdate();
+	}
+	
 	public void sendFriendRequest(String userId) throws SQLException {
 		new FriendRequest(id, userId).save();
 	}
+
+	public static ArrayList<User> findMany(Map<String, String> where) {
+		ArrayList<User> users = new ArrayList<User>();
+		StringBuilder sql = new StringBuilder("SELECT * FROM User WHERE ");
+		boolean first = true;
+		for (Entry<String, String> e : where.entrySet()) {
+			if (!first) {
+				sql.append("AND ");
+			}
+			sql.append(e.getKey() + "=? ");
+			first = false;
+		}
+
+		Logger.getLogger(DBConnector.class.getName()).log(Level.INFO, sql.toString());
+
+		return users;
+	}
+
+	public static User findById(String id) throws SQLException, UserDontExistException {
+		String sql = "SELECT * FROM User WHERE id=?";
+		PreparedStatement stmt = DBConnector.getPreparedStmt(sql);
+		stmt.setString(1, id);
+
+		ResultSet rs = stmt.executeQuery();
+
+		if (!rs.next()) {
+			throw new UserDontExistException();
+		}
+
+		return new User(rs);
+	}
+
+	public static User findByEmail(String email) throws SQLException, UserDontExistException {
+		String sql = "SELECT * FROM User WHERE email=?";
+		PreparedStatement stmt = DBConnector.getPreparedStmt(sql);
+		stmt.setString(1, email);
+
+		ResultSet rs = stmt.executeQuery();
+
+		if (!rs.next()) {
+			throw new UserDontExistException();
+		}
+
+		return new User(rs);
+	}
+
+	
+
+	
 
 }

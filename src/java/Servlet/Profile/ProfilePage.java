@@ -23,9 +23,8 @@ import javax.servlet.http.HttpServletResponse;
  * @author naol
  */
 public class ProfilePage extends HttpServlet {
-
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	
+	void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		User user = ServletUtils.getCurrentUser(req);
 		if (user == null) {
 			resp.sendRedirect("Login");
@@ -50,5 +49,17 @@ public class ProfilePage extends HttpServlet {
 		RequestDispatcher view = req.getRequestDispatcher("pages/home/profile/update-profile.jsp");
 		view.forward(req, resp);
 	}
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		processRequest(req, resp);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		processRequest(req, resp);
+	}
+	
+	
 
 }

@@ -1,2 +1,3 @@
 *.map
-build
+build/*
+web/uploads/profile-pictures/*

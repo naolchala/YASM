@@ -135,6 +135,23 @@ a {
 	}
 }
 
+.btn-secondary {
+	font-family: "Raleway";
+	font-weight: 500;
+	margin-top: 10px;
+	padding: 10px;
+	font-size: 0.9rem;
+	background-color: transparent;
+	text-align: center;
+	color: var(--primary);
+	border-radius: 5px;
+	cursor: pointer;
+
+	&:hover {
+		background-color: var(--primary-light-bg);
+	}
+}
+
 .icon-btn {
 	display: flex;
 	align-items: center;

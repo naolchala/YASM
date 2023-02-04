@@ -40,6 +40,22 @@
         <servlet-name>AcceptRequest</servlet-name>
         <servlet-class>Servlet.Friends.AcceptRequest</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ChangeProfilePicture</servlet-name>
+        <servlet-class>Servlet.Profile.ChangeProfilePicture</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdatePassword</servlet-name>
+        <servlet-class>Servlet.Profile.UpdatePassword</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateSecurity</servlet-name>
+        <servlet-class>Servlet.Profile.UpdateSecurity</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateName</servlet-name>
+        <servlet-class>Servlet.Profile.UpdateName</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Index</servlet-name>
         <url-pattern>/</url-pattern>
@@ -91,5 +107,20 @@
         <servlet-name>AcceptRequest</servlet-name>
         <url-pattern>/AcceptRequest</url-pattern>
     </servlet-mapping>
-
+    <servlet-mapping>
+        <servlet-name>ChangeProfilePicture</servlet-name>
+        <url-pattern>/ChangeProfilePicture</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdatePassword</servlet-name>
+        <url-pattern>/UpdatePassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateSecurity</servlet-name>
+        <url-pattern>/UpdateSecurity</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateName</servlet-name>
+        <url-pattern>/UpdateName</url-pattern>
+    </servlet-mapping>
 </web-app>

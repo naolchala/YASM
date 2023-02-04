@@ -112,51 +112,6 @@
   overflow: auto;
   padding: 30px;
 }
-.container .profile-container {
-  flex: 5;
-  background-color: var(--gray-bg);
-  border-radius: 10px 10px 0 0;
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
-  padding: 30px;
-}
-.container .profile-container .profile-container-wrapper {
-  background-color: white;
-  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
-  padding: 40px;
-  border-radius: 20px;
-}
-.container .profile-container .img-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.container .profile-container .img-container .btn {
-  border-radius: 50px;
-  padding: 8px 30px;
-  font-size: 13px;
-  font-weight: bold;
-}
-.container .profile-container .img-container img {
-  border-radius: 150px;
-  height: 150px;
-  width: 150px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  margin-bottom: 30px;
-  border: 3px solid #669bbc;
-}
-.container .profile-container .basic-info {
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-}
-.container .profile-container .basic-info .basic-info-field {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-}
 .container .side-bar {
   flex: 2;
   display: flex;
@@ -549,4 +504,75 @@
 }
 .friend-requests-container .friends-list .friend-item .actions a.decline:hover {
   background-color: var(--primary-light-bg);
+}
+
+.profile-container {
+  flex: 5;
+  background-color: var(--gray-bg);
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  padding: 30px;
+  background-color: white;
+}
+.profile-container .profile-container-wrapper {
+  background-color: white;
+  padding: 40px;
+  border-radius: 20px;
+}
+.profile-container .img-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.profile-container .img-container .btn {
+  border-radius: 50px;
+  padding: 8px 30px;
+  font-size: 13px;
+  font-weight: bold;
+}
+.profile-container .img-container .image-wrapper {
+  position: relative;
+}
+.profile-container .img-container .image-wrapper img {
+  border-radius: 150px;
+  height: 150px;
+  width: 150px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-bottom: 30px;
+}
+.profile-container .img-container .image-wrapper label {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  font-size: 24px;
+  background-color: white;
+  color: var(--primary);
+  right: 5px;
+  bottom: 40px;
+  border: 2px solid var(--primary);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  transition: all 300ms ease-out;
+}
+.profile-container .img-container .image-wrapper label:hover {
+  background-color: var(--primary);
+  color: white;
+  border-color: white;
+}
+.profile-container .basic-info {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+.profile-container .basic-info .basic-info-field {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
 }
