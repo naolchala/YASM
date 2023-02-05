@@ -26,7 +26,7 @@
     </servlet>
     <servlet>
         <servlet-name>ProfilePage</servlet-name>
-        <servlet-class>Servlet.Profile.ProfilePage</servlet-class>
+        <servlet-class>Servlets.Profile.ProfilePage</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>SendRequest</servlet-name>
@@ -42,19 +42,31 @@
     </servlet>
     <servlet>
         <servlet-name>ChangeProfilePicture</servlet-name>
-        <servlet-class>Servlet.Profile.ChangeProfilePicture</servlet-class>
+        <servlet-class>Servlets.Profile.ChangeProfilePicture</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UpdatePassword</servlet-name>
-        <servlet-class>Servlet.Profile.UpdatePassword</servlet-class>
+        <servlet-class>Servlets.Profile.UpdatePassword</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UpdateSecurity</servlet-name>
-        <servlet-class>Servlet.Profile.UpdateSecurity</servlet-class>
+        <servlet-class>Servlets.Profile.UpdateSecurity</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UpdateName</servlet-name>
-        <servlet-class>Servlet.Profile.UpdateName</servlet-class>
+        <servlet-class>Servlets.Profile.UpdateName</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PostStory</servlet-name>
+        <servlet-class>Servlets.Post.PostStory</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PostBlog</servlet-name>
+        <servlet-class>Servlets.Post.PostBlog</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PostPoll</servlet-name>
+        <servlet-class>Servlets.Post.PostPoll</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Index</servlet-name>
@@ -122,5 +134,17 @@
     <servlet-mapping>
         <servlet-name>UpdateName</servlet-name>
         <url-pattern>/UpdateName</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PostStory</servlet-name>
+        <url-pattern>/PostStory</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PostBlog</servlet-name>
+        <url-pattern>/PostBlog</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PostPoll</servlet-name>
+        <url-pattern>/PostPoll</url-pattern>
     </servlet-mapping>
 </web-app>

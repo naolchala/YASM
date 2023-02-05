@@ -59,8 +59,6 @@ public class User {
 		this.profileUrl = rs.getString("profileUrl");
 	}
 
-	
-
 	public static User login(String email, String password) throws SQLException, FormException {
 		String sql = "SELECT * FROM User WHERE email=?";
 		PreparedStatement stmt = DBConnector.getPreparedStmt(sql);
@@ -103,7 +101,7 @@ public class User {
 		stmt.executeUpdate();
 
 	}
-	
+
 	public String getFullname() {
 		return this.firstName + " " + this.lastName;
 	}
@@ -111,7 +109,7 @@ public class User {
 	public String getProfileUrl() {
 		return "uploads/profile-pictures/" + (this.profileUrl == null ? "default.png" : this.profileUrl);
 	}
-	
+
 	public ArrayList<User> getFriends() throws SQLException {
 		ArrayList<User> friends = new ArrayList<>();
 		String sql = "SELECT User.* FROM User, FriendRequest "
@@ -162,19 +160,33 @@ public class User {
 			exclusionList.add(rs.getString("id"));
 		}
 
-		StringBuilder excludeIn = new StringBuilder();
-		boolean first = true;
-		for (String id : exclusionList) {
-			if (!first) {
-				excludeIn.append(',');
-			}
-			excludeIn.append("'" + id + "'");
-			first = false;
-		}
+		if (exclusionList.isEmpty()) {
+			sql = "SELECT * FROM User "
+				+ "WHERE id != ? "
+				+ "ORDER BY RAND() LIMIT 10 ";
+			
+			stmt = DBConnector.getPreparedStmt(sql);
+			stmt.setString(1, this.id);
 
-		sql = "SELECT * FROM User WHERE id NOT IN (" + excludeIn.toString() + ") AND id != ? ORDER BY RAND() LIMIT 10 ";
-		stmt = DBConnector.getPreparedStmt(sql);
-		stmt.setString(1, this.id);
+		} else {
+			StringBuilder excludeIn = new StringBuilder();
+			boolean first = true;
+			for (String id : exclusionList) {
+				if (!first) {
+					excludeIn.append(',');
+				}
+				excludeIn.append("'" + id + "'");
+				first = false;
+			}
+
+			sql = "SELECT * FROM User "
+				+ "WHERE id NOT IN (" + excludeIn.toString() + ") "
+				+ "AND id != ? "
+				+ "ORDER BY RAND() LIMIT 10";
+			
+			stmt = DBConnector.getPreparedStmt(sql);
+			stmt.setString(1, this.id);
+		}
 
 		ArrayList<User> randList = new ArrayList<User>();
 
@@ -186,7 +198,6 @@ public class User {
 
 		return randList;
 	}
-	
 
 	public void changeProfilePicture(String profileUrl) throws SQLException {
 		this.profileUrl = profileUrl;
@@ -200,7 +211,7 @@ public class User {
 		stmt.executeUpdate();
 
 	}
-	
+
 	public void updateName(String firstName, String lastName) throws SQLException {
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -222,7 +233,7 @@ public class User {
 		stmt.executeUpdate();
 
 	}
-	
+
 	public void updateSecurityQuestionAnswer(String secQuestion, String secAnswer) throws SQLException {
 		this.securityAnswer = secAnswer;
 		this.securityQuestion = secQuestion;
@@ -231,10 +242,10 @@ public class User {
 		stmt.setString(1, this.securityQuestion);
 		stmt.setString(2, this.securityAnswer);
 		stmt.setString(3, this.id);
-		
+
 		stmt.executeUpdate();
 	}
-	
+
 	public void sendFriendRequest(String userId) throws SQLException {
 		new FriendRequest(id, userId).save();
 	}
@@ -283,9 +294,5 @@ public class User {
 
 		return new User(rs);
 	}
-
-	
-
-	
 
 }

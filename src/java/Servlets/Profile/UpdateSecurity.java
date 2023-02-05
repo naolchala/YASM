@@ -1,5 +1,4 @@
-
-package Servlet.Profile;
+package Servlets.Profile;
 
 import Exceptions.FormException;
 import Models.User;
@@ -16,7 +15,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class UpdateName extends HttpServlet {
+
+public class UpdateSecurity extends HttpServlet {
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		User user = ServletUtils.getCurrentUser(req);
@@ -25,14 +26,13 @@ public class UpdateName extends HttpServlet {
 			return;
 		}
 
-		String firstName = req.getParameter("firstName");
-		String lastName = req.getParameter("lastName");
+		String securityAnswer = req.getParameter("secAnswer");
+		String securityQuestion = req.getParameter("secQuestion");
 		
 
 		try {
-			FormValidator.validateEmpty(firstName, "firstName", "Please provide your first validation");
-			user.updateName(firstName, lastName);
-			
+			FormValidator.validateEmpty(securityAnswer, "secAnswer", "Please provide your answer");
+			user.updateSecurityQuestionAnswer(securityQuestion, securityAnswer);
 			ServletUtils.setCurrentUser(req, user);
 			resp.sendRedirect("ProfilePage");
 
@@ -45,4 +45,5 @@ public class UpdateName extends HttpServlet {
 		}
 
 	}
+	
 }

@@ -1,4 +1,4 @@
-package Servlet.Profile;
+package Servlets.Profile;
 
 import Exceptions.FormException;
 import Models.User;

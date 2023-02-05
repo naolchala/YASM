@@ -1,10 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Models;
 
 import Models.Constants.PostTypes;
+import Utils.DBConnector;
+import com.mysql.cj.xdevapi.DbDoc;
 import java.sql.*;
 import java.time.Instant;
 import java.util.UUID;
@@ -21,6 +20,20 @@ public class Post {
 		this.user = user;
 		this.type = type;
 		this.postedAt = Timestamp.from(Instant.now());
+	}
+	
+	void save() throws SQLException {
+		String sql = "INSERT INTO Posts "
+			+ "(id, userId, postedAt, type) "
+			+ "VALUES"
+			+ "(?, ?, ?, ?)";
+		PreparedStatement stmt = DBConnector.getPreparedStmt(sql);
+		stmt.setString(1, this.id);
+		stmt.setString(2, this.user.id);
+		stmt.setTimestamp(3, this.postedAt);
+		stmt.setString(4, this.type.toString());
+		
+		stmt.executeUpdate();
 	}
 	
 }

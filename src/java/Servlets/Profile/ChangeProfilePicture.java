@@ -1,4 +1,4 @@
-package Servlet.Profile;
+package Servlets.Profile;
 
 import Models.User;
 import Utils.ServletUtils;
@@ -30,22 +30,18 @@ public class ChangeProfilePicture extends HttpServlet {
 				resp.sendRedirect("Login");
 				return;
 			}
-			
-			
+
 			Part profilePicture = req.getPart("profile-picture");
 			String originalFilename = profilePicture.getSubmittedFileName();
-			
-			String[] filenameSplit = originalFilename.split("\\.");
-			String fileExtension = filenameSplit[filenameSplit.length - 1];
-			String filename = user.id + "--" +  String.valueOf(Instant.now().toEpochMilli()) + "." + fileExtension;
-			
+
+			String filename = ServletUtils.generateProfileFilename(user, originalFilename);
 			String filePath = ServletUtils.PROFILE_PICTURES_DIR + filename;
 			profilePicture.write(filePath);
-			
+
 			user.changeProfilePicture(filename);
 			ServletUtils.setCurrentUser(req, user);
 			resp.sendRedirect("ProfilePage");
-			
+
 		} catch (SQLException ex) {
 			Logger.getLogger(ChangeProfilePicture.class.getName()).log(Level.SEVERE, null, ex);
 		}
