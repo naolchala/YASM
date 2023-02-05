@@ -1,4 +1,4 @@
-package Servlet.Friends;
+package Servlets.Friends;
 
 import Models.User;
 import Utils.ServletUtils;

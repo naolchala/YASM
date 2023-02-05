@@ -22,7 +22,7 @@
     </servlet>
     <servlet>
         <servlet-name>FindFriends</servlet-name>
-        <servlet-class>Servlet.Friends.FindFriends</servlet-class>
+        <servlet-class>Servlets.Friends.FindFriends</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ProfilePage</servlet-name>
@@ -30,7 +30,7 @@
     </servlet>
     <servlet>
         <servlet-name>SendRequest</servlet-name>
-        <servlet-class>Servlet.Friends.SendRequest</servlet-class>
+        <servlet-class>Servlets.Friends.SendRequest</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Logout</servlet-name>
@@ -38,7 +38,7 @@
     </servlet>
     <servlet>
         <servlet-name>AcceptRequest</servlet-name>
-        <servlet-class>Servlet.Friends.AcceptRequest</servlet-class>
+        <servlet-class>Servlets.Friends.AcceptRequest</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ChangeProfilePicture</servlet-name>
