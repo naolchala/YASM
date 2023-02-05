@@ -1,3 +1,4 @@
 *.map
 build/*
 web/uploads/profile-pictures/*
+web/uploads/stories/*
