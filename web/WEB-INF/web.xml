@@ -68,6 +68,10 @@
         <servlet-name>PostPoll</servlet-name>
         <servlet-class>Servlets.Post.PostPoll</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Like</servlet-name>
+        <servlet-class>Servlets.Post.Like</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Index</servlet-name>
         <url-pattern>/</url-pattern>
@@ -146,5 +150,9 @@
     <servlet-mapping>
         <servlet-name>PostPoll</servlet-name>
         <url-pattern>/PostPoll</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Like</servlet-name>
+        <url-pattern>/Like</url-pattern>
     </servlet-mapping>
 </web-app>

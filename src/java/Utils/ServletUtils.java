@@ -2,6 +2,7 @@ package Utils;
 
 import Models.User;
 import java.time.Instant;
+import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -15,7 +16,7 @@ public class ServletUtils {
 	public static User getCurrentUser(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		if (session.getAttribute(USER_SESSION_NAME) != null) {
-			User user = (User) session.getAttribute("current-user");
+			User user = (User) session.getAttribute(USER_SESSION_NAME);
 			return user;
 		}
 		return null;
@@ -47,5 +48,23 @@ public class ServletUtils {
 
 	public static String generateStoryFilename(String filename) {
 		return  String.valueOf(Instant.now().toEpochMilli()) + getFileExtension(filename);
+	}
+	
+	public static String formatInStatement(ArrayList<String> list) {
+		StringBuilder str = new StringBuilder();
+		str.append("('', ");
+		
+		boolean first = true;
+		
+		for (String l: list) {
+			if (!first) {
+				str.append(", ");
+			}
+			str.append("'" + l + "'");
+			first = false;
+		}
+		
+		str.append(")");
+		return str.toString();
 	}
 }

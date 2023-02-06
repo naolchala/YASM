@@ -17,6 +17,26 @@ public class Story extends Post {
 		this.caption = caption;
 	}
 	
+	public Story(ResultSet rs) throws SQLException {
+		super(rs.getString("id"));
+		this.type = PostTypes.STORY;
+		this.photoUrl = rs.getString("photoUrl");
+		this.caption = rs.getString("caption");
+	}
+	
+
+	public static Story getById(String id) throws SQLException {
+		String sql = "SELECT * FROM Stories WHERE id=?";
+		PreparedStatement stmt = DBConnector.getPreparedStmt(sql);
+		stmt.setString(1, id);
+		ResultSet rs = stmt.executeQuery();
+		if (rs.next()) {
+			return new Story(rs);
+		};
+		return null;
+	}
+	
+	
 	public void save() throws SQLException {
 		super.save();
 		String sql  = "INSERT INTO Stories "
@@ -32,7 +52,7 @@ public class Story extends Post {
 	}
 	
 	public String getPhotoUrl() {
-		return ServletUtils.STORIES_DIR + this.photoUrl;
+		return "uploads/stories/" + this.photoUrl;
 	}
 	
 }

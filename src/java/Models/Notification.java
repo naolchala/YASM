@@ -71,7 +71,8 @@ public class Notification {
 		String sql = "SELECT * "
 			+ "FROM Notification INNER JOIN User ON "
 			+ "User.id = Notification.fromId "
-			+ "WHERE Notification.receiverId = ? ";
+			+ "WHERE Notification.receiverId = ? "
+			+ "ORDER BY datetime DESC";
 
 		PreparedStatement stmt = DBConnector.getPreparedStmt(sql);
 		stmt.setString(1, user.id);

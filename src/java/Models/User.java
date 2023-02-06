@@ -129,6 +129,16 @@ public class User {
 
 		return friends;
 	}
+	
+	public ArrayList<String> getFriendsID() throws SQLException {
+		ArrayList<String> ids = new ArrayList<String>();
+		ids.add(this.id);
+		for (User u: getFriends()) {
+			ids.add(u.id);
+		}
+		
+		return ids;
+	}
 
 	public ArrayList<User> getFriendRequests() throws SQLException {
 		ArrayList<User> requests = new ArrayList<>();

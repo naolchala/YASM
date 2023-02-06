@@ -1,5 +1,6 @@
 package Models;
 
+import Exceptions.UserDontExistException;
 import Models.Constants.PostTypes;
 import Utils.DBConnector;
 import java.sql.*;
@@ -13,6 +14,26 @@ public class Blog extends Post {
 		super(user, PostTypes.BLOG);
 		this.title = title;
 		this.content = content;
+	}
+	
+	public Blog(ResultSet rs) throws SQLException {
+		super(rs.getString("id"));
+		this.type = PostTypes.BLOG;
+		this.title = rs.getString("title");
+		this.content = rs.getString("content");
+	}
+	
+
+	
+	public static Blog getById(String id) throws SQLException {
+		String sql = "SELECT * FROM Blogs WHERE id=?";
+		PreparedStatement stmt = DBConnector.getPreparedStmt(sql);
+		stmt.setString(1, id);
+		ResultSet rs = stmt.executeQuery();
+		if (rs.next()) {
+			return new Blog(rs);
+		};
+		return null;
 	}
 	
 	
