@@ -1,7 +1,6 @@
 package Servlets.Post;
 
-import Exceptions.UserDontExistException;
-import Models.Reaction;
+import Models.Comment;
 import Models.User;
 import Utils.ServletUtils;
 import java.io.IOException;
@@ -15,28 +14,33 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-public class Like extends HttpServlet {
+public class PostComment extends HttpServlet {
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		User user = ServletUtils.getCurrentUser(req);
 		if (user == null) {
 			resp.sendRedirect("Login");
 			return;
 		}
 		
-		String postId = req.getParameter("id");
-		Reaction reaction = new Reaction(user, postId);
+		String content = req.getParameter("comment");
+		String postId = req.getParameter("postId");
+		
+		Comment comment = new Comment(content, postId, user);
 		try {
-			reaction.save();
-			resp.sendRedirect(".#"+postId);
+			comment.save();
+			resp.sendRedirect("PostPage?id=" + postId );
 		} catch (SQLException ex) {
-			Logger.getLogger(Like.class.getName()).log(Level.SEVERE, null, ex);
-		} catch (UserDontExistException ex) {
-			Logger.getLogger(Like.class.getName()).log(Level.SEVERE, null, ex);
+			req.setAttribute("error", "Error posting your comment, please try again");
+			Logger.getLogger(PostComment.class.getName()).log(Level.SEVERE, null, ex);
 		}
 		
 		
+		
 	}
+
+	
+	
 	
 }

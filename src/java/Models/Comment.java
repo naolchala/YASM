@@ -5,14 +5,19 @@
 package Models;
 
 import Exceptions.UserDontExistException;
+import Models.Constants.NotificationType;
+import Utils.DBConnector;
 import java.sql.*;
+import java.time.Instant;
 import java.util.UUID;
 
 public class Comment {
+
 	public String id;
 	public String content;
 	public String postId;
 	public String userId;
+	public Timestamp commentedAt;
 	public Post post;
 	public User user;
 
@@ -22,6 +27,7 @@ public class Comment {
 		this.postId = postId;
 		this.user = user;
 		this.userId = user.id;
+		this.commentedAt = Timestamp.from(Instant.now());
 	}
 
 	public Comment(ResultSet rs) throws SQLException, UserDontExistException {
@@ -30,5 +36,31 @@ public class Comment {
 		this.userId = rs.getString("userId");
 		this.postId = rs.getString("postId");
 		this.user = User.findById(this.userId);
+		this.commentedAt = rs.getTimestamp("commentedAt");
+	}
+
+	public void save() throws SQLException {
+		String sql = "INSERT INTO Comments "
+			+ "(id, userId, postId, content) "
+			+ "VALUES "
+			+ "(?, ?, ?, ?)";
+
+		PreparedStatement stmt = DBConnector.getPreparedStmt(sql);
+		stmt.setString(1, this.id);
+		stmt.setString(2, this.userId);
+		stmt.setString(3, this.postId);
+		stmt.setString(4, this.content);
+
+		stmt.executeUpdate();
+		User postOwner = Post.getPoster(postId);
+
+		if (!postOwner.id.equals(userId)) {
+			new Notification(postOwner.id, userId, NotificationType.COMMENTED_POST, postId).save();
+		}
+
+	}
+
+	public static void upVote() {
+
 	}
 }

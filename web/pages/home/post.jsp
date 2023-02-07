@@ -1,10 +1,16 @@
-<%@page import="Models.Constants.PostTypes"%>
+<%@page import="Models.Comment"%>
+<%@page import="Models.Story"%>
+<%@page import="Models.Blog"%>
 <%@page import="Models.Choice"%>
 <%@page import="Models.Poll"%>
-<%@page import="Models.Blog"%>
-<%@page import="Models.Story"%>
+<%@page import="Models.Constants.PostTypes"%>
 <%@page import="Models.Post"%>
-<% User current = ServletUtils.getCurrentUser(request); %>
+<%
+	User current = ServletUtils.getCurrentUser(request);
+	Post post = (Post) request.getAttribute("post");
+	ArrayList<Comment> comments = (ArrayList<Comment>) request.getAttribute("comments");
+%>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -16,14 +22,14 @@
 	<link rel="stylesheet" href="static/css/fonts.css" />
 	<link rel="stylesheet" href="static/css/common.css" />
 	<link rel="stylesheet" href="static/css/home.css" />
+	<link rel="stylesheet" href="static/css/post.css" />
     </head>
+
     <body class="full-page flex flex-col">
 	<%@include file="components/navbar.jsp" %>
 	<div class="container flex-1">
 	    <%@include file="components/side-menu.jsp" %>
-	    <main class="posts-container">
-		<% ArrayList<Post> posts = (ArrayList<Post>) request.getAttribute("posts"); %>
-		<% for (Post post : posts) {%>
+	    <main class="posts-container bg-white">
 		<div class="post
 		     <%= post.type.toString().toLowerCase()%>
 		     <%= post.type == PostTypes.POLL && ((Poll) post).isVoted(current) ? "voted" : ""%>" 
@@ -40,7 +46,6 @@
 			    <span class="time">2 hours ago</span>
 			</div>
 		    </header>
-
 		    <% switch (post.type) {
 				    case STORY: {
 					    Story story = (Story) post;
@@ -61,19 +66,13 @@
 				    Blog blog = (Blog) post;
 		    %>
 		    <article>
-			<a>
-			    <h2 class="title">
-				<%= blog.title%>
-			    </h2>
-			</a>
-			<p class="caption">
-			    <% if (blog.content.length() < 400) {
-					    out.print(blog.content);
-				    } else {
-					    out.print(blog.content.substring(0, 400));
-				    }
-			    %>
 
+			<h1 class="title">
+			    <%= blog.title%>
+			</h1>
+
+			<p class="caption" id="content">
+			    <%= blog.content%>
 			</p>
 		    </article>
 		    <%
@@ -85,7 +84,7 @@
 		    %>
 		    <article>
 			<h2><%= poll.title%></h2>
-			<p class="caption pt0"><%= poll.totalVotes %> people voted</p>
+			<p class="caption pt0"><%= poll.totalVotes%> people voted</p>
 			<div class="choices-container">
 			    <% for (Choice choice : poll.choices) {%>
 			    <% if (poll.votedChoice == null) {%>
@@ -136,86 +135,70 @@
 				<i class="bx bxs-comment"></i>
 			    </span>
 			    <span class="stat">
-				<span class="num"><%= post.commentCount %></span>
+				<span class="num"><%= post.commentCount%></span>
 				<span>Comments</span>
 			    </span>
 			</a>
 		    </footer>
 		</div>
-		<% }%>
-
-		<div class="post poll voted">
-		    <header>
-			<img
-				src="static/images/profile-picture.jpg"
-				alt="person"
-				/>
-			<div class="text-cont">
-			    <span class="name">Kathryn Murphy</span>
-			    <span class="time">2 hours ago</span>
+		<div class="input-and-comments-wrapper">
+		    <form action="PostComment" method="post" class="comment-input">
+			<input type="hidden" name="postId" value="<%= post.id%>" hidden>
+			<textarea placeholder="Write your comment here..."
+				  name="comment"
+				  id="comment"
+				  rows="4"></textarea>
+			<button class=" btn btn-primary send-btn">
+			    <span>Comment</span>
+			    <i class="icon bx bxs-send"></i>
+			</button>
+		    </form>
+		    <div class="comments-container">
+			<h2>
+			    Comments
+			</h2>
+			<div class="comments-wrapper">
+			    <% for (Comment comment : comments) {%>
+			    <div class="comment">
+				<header>
+				    <img src="<%= comment.user.getProfileUrl()%> " alt="" class="avatar"
+					 style="--size: 45px">
+				    <div class="flex flex-col">
+					<h4 class="name"><%= comment.user.getFullname()%></h4>
+					<span class="time">2 hours ago</span>
+				    </div>
+				</header>
+				<article>
+				    <p>
+					<%= comment.content%>
+				    </p>
+				</article>
+				<footer>
+				    <a href="#upvote" class="icon-btn">
+					<i class="bx bx-chevron-up"></i>
+				    </a>
+				    <span>+10</span>
+				    <a href="#upvote" class="icon-btn">
+					<i class="bx bx-chevron-down"></i>
+				    </a>
+				</footer>
+			    </div>
+			    <% }%>
 			</div>
-		    </header>
-		    <article>
-			<h2>What is the best programming language?</h2>
-			<p class="caption pt0">100,304 people voted</p>
-			<div class="choices-container">
-			    <div class="choice" style="--width: 20%">
-				<span class="content">Java</span>
-				<span class="value">20%</span>
-			    </div>
-			    <div class="choice" style="--width: 30%">
-				<span class="content">Python</span>
-				<span class="value">30%</span>
-			    </div>
-			    <div class="choice" style="--width: 10%">
-				<span class="content">C++</span>
-				<span class="value">10%</span>
-			    </div>
-			    <div class="choice voted" style="--width: 40%">
-				<span class="content">Javascript</span>
-				<span class="value">40%</span>
-			    </div>
-			</div>
-		    </article>
-		    <footer>
-			<a href="#" class="action-btn">
-			    <span class="icon">
-				<i class="bx bxs-like"></i>
-			    </span>
-			    <span class="stat">
-				<span class="num">1K</span>
-				<span>Likes</span>
-			    </span>
-			</a>
-
-			<a href="#" class="action-btn">
-			    <span class="icon">
-				<i class="bx bxs-comment"></i>
-			    </span>
-			    <span class="stat">
-				<span class="num">200</span>
-				<span>Comments</span>
-			    </span>
-			</a>
-		    </footer>
-		</div>
-
-		<div class="pagination">
-		   
-		    <% if (((int)request.getAttribute("page")) > 1) { %>
-		    <a href=".?page=${requestScope["page"] -1}">
-			<i class="bx bx-chevron-left"></i>
-		    </a>
-			<% }%>
-		    <a href="#3" class="active">${requestScope["page"]}</a>
-		    <a href=".?page=${requestScope["page"] + 1}">
-			<i class="bx bx-chevron-right"></i>
-		    </a>
+		    </div>
 		</div>
 	    </main>
 	    <%@include file="components/notification.jsp" %>
 	</div>
     </body>
+    <% if (post.type == PostTypes.BLOG) {%>
+    <script src="static/editor/marked.min.js"></script>
+    <script>
+            let contentDiv = document.getElementById("content");
+            let content = `<%= ((Blog) post).content%>`;
+            contentDiv.innerHTML = marked.parse(content);
+    </script>
+    <%}%>
     <script>
             let menuItems = [...document.querySelectorAll(".menu-item")];
             menuItems.forEach((menuItem) => {
@@ -238,5 +221,7 @@
                     btn.children[0].classList.remove("bx-tada");
                 });
             });
+
     </script>
+
 </html>

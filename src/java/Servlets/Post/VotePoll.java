@@ -1,8 +1,8 @@
+
 package Servlets.Post;
 
-import Exceptions.UserDontExistException;
-import Models.Reaction;
 import Models.User;
+import Models.Vote;
 import Utils.ServletUtils;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,8 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-public class Like extends HttpServlet {
+public class VotePoll extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -25,15 +24,17 @@ public class Like extends HttpServlet {
 			return;
 		}
 		
-		String postId = req.getParameter("id");
-		Reaction reaction = new Reaction(user, postId);
+		String choiceId = req.getParameter("choiceId");
+		String pollId = req.getParameter("pollId");
+		
+		Vote vote = new Vote(user, pollId, choiceId);
 		try {
-			reaction.save();
-			resp.sendRedirect(".#"+postId);
+			vote.save();
+			resp.sendRedirect(".#"+pollId);
+			
+			
 		} catch (SQLException ex) {
-			Logger.getLogger(Like.class.getName()).log(Level.SEVERE, null, ex);
-		} catch (UserDontExistException ex) {
-			Logger.getLogger(Like.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(VotePoll.class.getName()).log(Level.SEVERE, null, ex);
 		}
 		
 		

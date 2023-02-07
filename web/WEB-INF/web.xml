@@ -72,6 +72,18 @@
         <servlet-name>Like</servlet-name>
         <servlet-class>Servlets.Post.Like</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PostPage</servlet-name>
+        <servlet-class>Servlets.PostPage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VotePoll</servlet-name>
+        <servlet-class>Servlets.Post.VotePoll</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PostComment</servlet-name>
+        <servlet-class>Servlets.Post.PostComment</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Index</servlet-name>
         <url-pattern>/</url-pattern>
@@ -154,5 +166,17 @@
     <servlet-mapping>
         <servlet-name>Like</servlet-name>
         <url-pattern>/Like</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PostPage</servlet-name>
+        <url-pattern>/PostPage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VotePoll</servlet-name>
+        <url-pattern>/VotePoll</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PostComment</servlet-name>
+        <url-pattern>/PostComment</url-pattern>
     </servlet-mapping>
 </web-app>
