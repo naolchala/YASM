@@ -98,7 +98,7 @@ public class Post {
 	public static ArrayList<Post> getPostsForUser(User user, int page) throws SQLException {
 		ArrayList<Post> posts = new ArrayList<Post>();
 		String friendsID = ServletUtils.formatInStatement(user.getFriendsID());
-		int take = 15;
+		int take = 5;
 		int offset  = (page - 1) * take;
 		
 		String sql = "SELECT * FROM Posts, User WHERE "

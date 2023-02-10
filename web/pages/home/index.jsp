@@ -20,9 +20,17 @@
     <body class="full-page flex flex-col">
 	<%@include file="components/navbar.jsp" %>
 	<div class="container flex-1">
+	    <% request.setAttribute("current-page", "home"); %>
 	    <%@include file="components/side-menu.jsp" %>
 	    <main class="posts-container">
 		<% ArrayList<Post> posts = (ArrayList<Post>) request.getAttribute("posts"); %>
+		
+		<% if (posts.isEmpty()) { %>
+		<div class="empty-wrapper">
+		    <img src="static/images/posts-empty.svg" alt="empty" />
+		    <h3>Connect with friends and comeback</h3>
+		</div>
+		<% } else { %>
 		<% for (Post post : posts) {%>
 		<div class="post
 		     <%= post.type.toString().toLowerCase()%>
@@ -61,7 +69,7 @@
 				    Blog blog = (Blog) post;
 		    %>
 		    <article>
-			<a>
+			<a href="PostPage?id=<%= blog.id %>">
 			    <h2 class="title">
 				<%= blog.title%>
 			    </h2>
@@ -144,61 +152,6 @@
 		</div>
 		<% }%>
 
-		<div class="post poll voted">
-		    <header>
-			<img
-				src="static/images/profile-picture.jpg"
-				alt="person"
-				/>
-			<div class="text-cont">
-			    <span class="name">Kathryn Murphy</span>
-			    <span class="time">2 hours ago</span>
-			</div>
-		    </header>
-		    <article>
-			<h2>What is the best programming language?</h2>
-			<p class="caption pt0">100,304 people voted</p>
-			<div class="choices-container">
-			    <div class="choice" style="--width: 20%">
-				<span class="content">Java</span>
-				<span class="value">20%</span>
-			    </div>
-			    <div class="choice" style="--width: 30%">
-				<span class="content">Python</span>
-				<span class="value">30%</span>
-			    </div>
-			    <div class="choice" style="--width: 10%">
-				<span class="content">C++</span>
-				<span class="value">10%</span>
-			    </div>
-			    <div class="choice voted" style="--width: 40%">
-				<span class="content">Javascript</span>
-				<span class="value">40%</span>
-			    </div>
-			</div>
-		    </article>
-		    <footer>
-			<a href="#" class="action-btn">
-			    <span class="icon">
-				<i class="bx bxs-like"></i>
-			    </span>
-			    <span class="stat">
-				<span class="num">1K</span>
-				<span>Likes</span>
-			    </span>
-			</a>
-
-			<a href="#" class="action-btn">
-			    <span class="icon">
-				<i class="bx bxs-comment"></i>
-			    </span>
-			    <span class="stat">
-				<span class="num">200</span>
-				<span>Comments</span>
-			    </span>
-			</a>
-		    </footer>
-		</div>
 
 		<div class="pagination">
 		   
@@ -212,6 +165,7 @@
 			<i class="bx bx-chevron-right"></i>
 		    </a>
 		</div>
+		<% }%>
 	    </main>
 	    <%@include file="components/notification.jsp" %>
 	</div>

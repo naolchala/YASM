@@ -1,18 +1,19 @@
+<% String current_page = request.getAttribute("current-page") != null ? (String) request.getAttribute("current-page") :  ""; %>
 <aside class="side-bar">
-    <a href="." class="menu-item selected">
+    <a href="." class="menu-item <%= current_page.equals("home") ? "selected" : "" %> ">
 	<div class="icon-container">
 	    <i class="bx bxs-home-circle"></i>
 	</div>
 	<span>Home</span>
     </a>
-    <a href="Explore" class="menu-item">
+    <a href="Explore" class="menu-item <%= current_page.equals("explore") ? "selected" : "" %>">
 	<div class="icon-container">
 	    <i class="bx bxs-compass"></i>
 	</div>
 	<span>Explore</span>
     </a>
 
-    <label class="menu-item">
+    <label class="menu-item <%= current_page.equals("add") ? "selected" : "" %>">
 	<div class="icon-container">
 	    <i class="bx bxs-file-plus"></i>
 	</div>
@@ -35,13 +36,13 @@
 	    </div>
 	</div>
     </label>
-    <a href="FindFriends" class="menu-item">
+    <a href="FindFriends" class="menu-item <%= current_page.equals("friends") ? "selected" : "" %>">
 	<div class="icon-container">
 	    <i class="bx bxs-user-plus"></i>
 	</div>
 	<span>Friends</span>
     </a>
-    <a class="menu-item">
+    <a class="menu-item <%= current_page.equals("about") ? "selected" : "" %>">
 	<div class="icon-container">
 	    <i class="bx bxs-face"></i>
 	</div>
@@ -69,3 +70,6 @@
 	</div>
     </div>
 </aside>
+<script>
+	console.log("<%=  application.getContextPath() %>")
+</script>

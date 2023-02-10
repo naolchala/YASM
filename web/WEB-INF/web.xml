@@ -84,6 +84,10 @@
         <servlet-name>PostComment</servlet-name>
         <servlet-class>Servlets.Post.PostComment</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>VoteComment</servlet-name>
+        <servlet-class>Servlets.Post.VoteComment</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Index</servlet-name>
         <url-pattern>/</url-pattern>
@@ -106,6 +110,7 @@
         <url-pattern>*.jpg</url-pattern>
         <url-pattern>*.png</url-pattern>
         <url-pattern>*.svg</url-pattern>
+        <url-pattern>*.ico</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>FindAccount</servlet-name>
@@ -178,5 +183,9 @@
     <servlet-mapping>
         <servlet-name>PostComment</servlet-name>
         <url-pattern>/PostComment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VoteComment</servlet-name>
+        <url-pattern>/VoteComment</url-pattern>
     </servlet-mapping>
 </web-app>

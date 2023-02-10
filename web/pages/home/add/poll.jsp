@@ -16,6 +16,7 @@
     <body class="full-page flex flex-col">
 	<%@include file="../components/navbar.jsp" %>
 	<div class="container flex-1">
+	    <% request.setAttribute("current-page", "add"); %>
 	    <%@include file="../components/side-menu.jsp" %>
 	    <main class="posts-container">
 		<form action="PostPoll" method="post" class="upload-container p30">

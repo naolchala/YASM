@@ -121,6 +121,26 @@
 		gap: 40px;
 		overflow: auto;
 		padding: 30px;
+
+		.empty-wrapper {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+
+			img {
+				margin-top: 20px;
+				width: 100%;
+				height: 300px;
+				object-fit: contain;
+			}
+			h3 {
+				margin-top: 50px;
+				font-size: 26px;
+				font-weight: 400;
+				text-align: center;
+			}
+		}
 	}
 
 	.side-bar {
@@ -453,6 +473,9 @@
 					}
 
 					&.voted {
+						.value {
+							z-index: 20;
+						}
 						.content {
 							color: white;
 						}

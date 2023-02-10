@@ -1,3 +1,4 @@
+<%@page import="Models.Constants.CommentReactionTypes"%>
 <%@page import="Models.Comment"%>
 <%@page import="Models.Story"%>
 <%@page import="Models.Blog"%>
@@ -158,6 +159,12 @@
 			    Comments
 			</h2>
 			<div class="comments-wrapper">
+			    <% if (comments.isEmpty()) { %>
+			    <div class="empty-wrapper">
+				<img src="static/images/comment-empty.svg" />
+				<h3>Be the first to comment</h3>
+			    </div>
+			    <% } else {%>
 			    <% for (Comment comment : comments) {%>
 			    <div class="comment">
 				<header>
@@ -174,16 +181,19 @@
 				    </p>
 				</article>
 				<footer>
-				    <a href="#upvote" class="icon-btn">
+				    <a href="VoteComment?postId=<%= post.id %>&commentId=<%= comment.id %>&type=upvote"
+				       class="icon-btn <%= comment.userReaction == CommentReactionTypes.UPVOTE ? "selected" : "" %> ">
 					<i class="bx bx-chevron-up"></i>
 				    </a>
-				    <span>+10</span>
-				    <a href="#upvote" class="icon-btn">
+				    <span><%= comment.getResult() %></span>
+				    <a href="VoteComment?postId=<%= post.id %>&commentId=<%= comment.id %>&type=downvote" 
+				       class="icon-btn <%= comment.userReaction == CommentReactionTypes.DOWNVOTE ? "selected" : "" %>">
 					<i class="bx bx-chevron-down"></i>
 				    </a>
 				</footer>
 			    </div>
 			    <% }%>
+			    <%}%>
 			</div>
 		    </div>
 		</div>

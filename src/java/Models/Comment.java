@@ -5,10 +5,12 @@
 package Models;
 
 import Exceptions.UserDontExistException;
+import Models.Constants.CommentReactionTypes;
 import Models.Constants.NotificationType;
 import Utils.DBConnector;
 import java.sql.*;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class Comment {
@@ -20,6 +22,8 @@ public class Comment {
 	public Timestamp commentedAt;
 	public Post post;
 	public User user;
+	public ArrayList<CommentReaction> commentReactions;
+	public CommentReactionTypes userReaction;
 
 	public Comment(String content, String postId, User user) {
 		this.id = UUID.randomUUID().toString();
@@ -37,6 +41,8 @@ public class Comment {
 		this.postId = rs.getString("postId");
 		this.user = User.findById(this.userId);
 		this.commentedAt = rs.getTimestamp("commentedAt");
+		this.userReaction = CommentReaction.isUserVoted(this.userId, this.id);
+		loadReactions();
 	}
 
 	public void save() throws SQLException {
@@ -60,7 +66,29 @@ public class Comment {
 
 	}
 
-	public static void upVote() {
-
+	public void loadReactions() throws SQLException {
+		commentReactions = new ArrayList<>();
+		String sql = "SELECT * FROM CommentReactions WHERE commentId=?";
+		PreparedStatement stmt = DBConnector.getPreparedStmt(sql);
+		stmt.setString(1, this.id);
+		ResultSet rs = stmt.executeQuery();
+		while(rs.next()) {
+			commentReactions.add(new CommentReaction(rs));
+		}
 	}
+	
+	public int getResult() {
+		int count = 0;
+		
+		for (CommentReaction cr: commentReactions) {
+			if (cr.type == CommentReactionTypes.UPVOTE) {
+				count++;
+			}else if (cr.type == CommentReactionTypes.DOWNVOTE) {
+				count--;
+			}
+		}
+		
+		return count;
+	}
+	
 }

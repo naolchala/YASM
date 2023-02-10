@@ -79,6 +79,20 @@
   flex-direction: column;
   gap: 40px;
 }
+.posts-container .comments-wrapper .empty-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.posts-container .comments-wrapper .empty-wrapper img {
+  height: 300px;
+}
+.posts-container .comments-wrapper .empty-wrapper h3 {
+  margin-top: 40px;
+  font-weight: 300;
+  font-size: 30px;
+}
 .posts-container .comments-wrapper .comment {
   background-color: white;
   padding: 20px;
@@ -108,13 +122,17 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 5px;
+  gap: 15px;
 }
 .posts-container .comments-wrapper .comment footer a {
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 30px;
+}
+.posts-container .comments-wrapper .comment footer a.selected {
+  background-color: var(--primary);
+  color: white;
 }
 .posts-container .comments-wrapper .comment footer span {
   color: var(--primary);

@@ -17,6 +17,7 @@
     <body class="full-page flex flex-col">
 	<%@include file="components/navbar.jsp" %>
 	<div class="container flex-1">
+	    <% request.setAttribute("current-page", "friends"); %>
 	    <%@include file="components/side-menu.jsp" %>
 	    <main class="posts-container">
 		<div class="friend-requests-container">
