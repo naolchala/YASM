@@ -15,14 +15,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-	<meta charset="UTF-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>YASM</title>
-	<link rel="stylesheet" href="static/css/icons/css/boxicons.css" />
-	<link rel="stylesheet" href="static/css/fonts.css" />
-	<link rel="stylesheet" href="static/css/common.css" />
-	<link rel="stylesheet" href="static/css/home.css" />
+	<%@include file="components/common-head.jsp" %>
 	<link rel="stylesheet" href="static/css/post.css" />
     </head>
 
@@ -44,7 +37,7 @@
 				/>
 			<div class="text-cont">
 			    <span class="name"><%= post.postedBy.getFullname()%></span>
-			    <span class="time">2 hours ago</span>
+			    <span class="time"><%= ServletUtils.getFromNow(post.postedAt)%></span>
 			</div>
 		    </header>
 		    <% switch (post.type) {
@@ -71,9 +64,9 @@
 			<h1 class="title">
 			    <%= blog.title%>
 			</h1>
-
+			<input type="hidden" value="<%=  blog.content %>" id="blg" />
 			<p class="caption" id="content">
-			    <%= blog.content%>
+			    
 			</p>
 		    </article>
 		    <%
@@ -142,6 +135,7 @@
 			</a>
 		    </footer>
 		</div>
+
 		<div class="input-and-comments-wrapper">
 		    <form action="PostComment" method="post" class="comment-input">
 			<input type="hidden" name="postId" value="<%= post.id%>" hidden>
@@ -172,7 +166,7 @@
 					 style="--size: 45px">
 				    <div class="flex flex-col">
 					<h4 class="name"><%= comment.user.getFullname()%></h4>
-					<span class="time">2 hours ago</span>
+					<span class="time"><%= ServletUtils.getFromNow(comment.commentedAt)%></span>
 				    </div>
 				</header>
 				<article>
@@ -181,13 +175,19 @@
 				    </p>
 				</article>
 				<footer>
-				    <a href="VoteComment?postId=<%= post.id %>&commentId=<%= comment.id %>&type=upvote"
-				       class="icon-btn <%= comment.userReaction == CommentReactionTypes.UPVOTE ? "selected" : "" %> ">
+				    <a href="VoteComment?postId=<%= post.id%>&commentId=<%= comment.id%>&type=upvote"
+				       class="icon-btn
+				       <%= comment.getUserReaction(current.id) == CommentReactionTypes.UPVOTE
+					       ? "selected" : ""%>"
+				       >
 					<i class="bx bx-chevron-up"></i>
 				    </a>
-				    <span><%= comment.getResult() %></span>
-				    <a href="VoteComment?postId=<%= post.id %>&commentId=<%= comment.id %>&type=downvote" 
-				       class="icon-btn <%= comment.userReaction == CommentReactionTypes.DOWNVOTE ? "selected" : "" %>">
+				    <span><%= comment.getResult()%></span>
+				    <a href="VoteComment?postId=<%= post.id%>&commentId=<%= comment.id%>&type=downvote" 
+				       class="icon-btn
+				       <%= comment.getUserReaction(current.id) == CommentReactionTypes.DOWNVOTE
+					       ? "selected" : ""%>"
+				       >
 					<i class="bx bx-chevron-down"></i>
 				    </a>
 				</footer>
@@ -204,9 +204,9 @@
     <% if (post.type == PostTypes.BLOG) {%>
     <script src="static/editor/marked.min.js"></script>
     <script>
-            let contentDiv = document.getElementById("content");
-            let content = `<%= ((Blog) post).content%>`;
-            contentDiv.innerHTML = marked.parse(content);
+            let contentDiv = document.getElementById("content")
+	    let blog = document.getElementById("blg");
+            contentDiv.innerHTML = marked.parse(blg.value);
     </script>
     <%}%>
     <script>

@@ -2,21 +2,14 @@
 <html lang="en">
 
     <head>
-	<meta charset="UTF-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>YASM</title>
-	<link rel="stylesheet" href="static/css/icons/css/boxicons.css" />
-	<link rel="stylesheet" href="static/css/fonts.css" />
-	<link rel="stylesheet" href="static/css/common.css" />
-	<link rel="stylesheet" href="static/css/home.css" />
-	<link rel="stylesheet" href="static/css/add.css" />
+	<%@include file="../components/common-head.jsp" %>
     </head>
 
     <body class="full-page flex flex-col">
 	<%@include  file="../components/navbar.jsp" %>
 	<div class="container flex-1">
-	    <% request.setAttribute("current-page", "add"); %>
+	    <% request.setAttribute("current-page", "add");
+		   %>
 	    <%@include  file="../components/side-menu.jsp" %>
 	    <main class="posts-container">
 		<form action="" method="post" enctype="multipart/form-data" class="upload-container p30">

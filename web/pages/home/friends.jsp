@@ -4,14 +4,7 @@
 <html lang="en">
 
     <head>
-	<meta charset="UTF-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>YASM</title>
-	<link rel="stylesheet" href="static/css/icons/css/boxicons.css" />
-	<link rel="stylesheet" href="static/css/fonts.css" />
-	<link rel="stylesheet" href="static/css/common.css" />
-	<link rel="stylesheet" href="static/css/home.css" />
+	<%@include file="components/common-head.jsp" %>
     </head>
 
     <body class="full-page flex flex-col">

@@ -5,6 +5,8 @@ import java.time.Instant;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.sql.Timestamp;
+import org.ocpsoft.pretty.time.PrettyTime;
 
 public class ServletUtils {
 
@@ -66,5 +68,10 @@ public class ServletUtils {
 		
 		str.append(")");
 		return str.toString();
+	}
+	
+	public static String getFromNow(Timestamp time) {
+		PrettyTime p = new PrettyTime();
+		return p.format(time);
 	}
 }

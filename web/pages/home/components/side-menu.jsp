@@ -70,6 +70,3 @@
 	</div>
     </div>
 </aside>
-<script>
-	console.log("<%=  application.getContextPath() %>")
-</script>

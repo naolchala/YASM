@@ -8,10 +8,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Login</title>
 
-		<!-- <link rel="apple-touch-icon" sizes="180x180" href="static/favicon_io/apple-touch-icon.png"> -->
-		<!-- <link rel="icon" type="image/png" sizes="32x32" href="static/favicon_io/favicon-32x32.png">
+		 <link rel="apple-touch-icon" sizes="180x180" href="static/favicon_io/apple-touch-icon.png"> 
+		 <link rel="icon" type="image/png" sizes="32x32" href="static/favicon_io/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="static/favicon_io/favicon-32x32.png">
-		<link rel="manifest" href="static/favicon_io/site.webmanifest"> -->
+		<link rel="manifest" href="static/favicon_io/site.webmanifest"> 
 		<link rel="shortcut icon" href="static/favicon_io/favicon.ico" type="image/x-icon">
 
 		<link rel="stylesheet" href="static/css/icons/css/boxicons.css" />

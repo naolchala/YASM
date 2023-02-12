@@ -14,7 +14,7 @@
 }
 .posts-container .post.blog article {
   padding: 10px 20px;
-  font-size: 18px;
+  font-size: 20px;
 }
 .posts-container .post.blog article img {
   border-radius: 10px;
@@ -26,12 +26,27 @@
           margin-block-end: 1em;
 }
 .posts-container .post.blog article .caption {
-  font-size: 16px;
+  font-size: 1rem;
   margin: 0;
   padding: 0;
 }
 .posts-container .post.blog article .caption h2 {
   padding: 5px 0 20px 0px;
+}
+.posts-container .post.blog article .caption code {
+  overflow: auto;
+  font-family: monospace !important;
+  background-color: var(--gray-bg);
+  padding: 3px;
+  margin: 4px;
+}
+.posts-container .post.blog article .caption pre {
+  font-size: smaller;
+  overflow: auto;
+  background-color: var(--gray-bg);
+  border: 1px solid var(--primary);
+  font-family: monospace !important;
+  white-space: pre;
 }
 .posts-container .input-and-comments-wrapper {
   background-color: var(--gray-bg);

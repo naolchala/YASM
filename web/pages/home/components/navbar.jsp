@@ -1,4 +1,5 @@
 <%@page import="Utils.ServletUtils"%>
+
 <div class="header">
     <h1 class="title">YASM</h1>
     <div class="search-field-container">

@@ -91,4 +91,15 @@ public class Comment {
 		return count;
 	}
 	
+	public CommentReactionTypes getUserReaction(String userId) {
+		
+		for (CommentReaction rxn: commentReactions) {
+			if (rxn.userId.equals(userId)) {
+				return rxn.type;
+			}
+		}
+		
+		return CommentReactionTypes.NONE;
+	}
+	
 }

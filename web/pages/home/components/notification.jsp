@@ -22,7 +22,7 @@
 		<span class="desc">
 		    <b class="name"><%= n.from.getFullname()%></b> <%= n.getMessage()%>
 		</span>
-		    <span class="time"> <%= n.getFormattedDate() %> </span>
+		    <span class="time"> <%= ServletUtils.getFromNow(n.datetime) %> </span>
 	    </div>
 	</div>
 	<% }%>

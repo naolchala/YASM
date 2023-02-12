@@ -8,14 +8,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-	<meta charset="UTF-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>YASM</title>
-	<link rel="stylesheet" href="static/css/icons/css/boxicons.css" />
-	<link rel="stylesheet" href="static/css/fonts.css" />
-	<link rel="stylesheet" href="static/css/common.css" />
-	<link rel="stylesheet" href="static/css/home.css" />
+	<%@include file="components/common-head.jsp" %>
     </head>
     <body class="full-page flex flex-col">
 	<%@include file="components/navbar.jsp" %>
@@ -45,7 +38,7 @@
 				/>
 			<div class="text-cont">
 			    <span class="name"><%= post.postedBy.getFullname()%></span>
-			    <span class="time">2 hours ago</span>
+			    <span class="time"><%= ServletUtils.getFromNow(post.postedAt) %></span>
 			</div>
 		    </header>
 

@@ -111,6 +111,7 @@
         <url-pattern>*.png</url-pattern>
         <url-pattern>*.svg</url-pattern>
         <url-pattern>*.ico</url-pattern>
+        <url-pattern>*.webmanifest</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>FindAccount</servlet-name>

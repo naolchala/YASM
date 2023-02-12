@@ -2,14 +2,7 @@
 <html lang="en">
 
     <head>
-	<meta charset="UTF-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>YASM</title>
-	<link rel="stylesheet" href="static/css/icons/css/boxicons.css" />
-	<link rel="stylesheet" href="static/css/fonts.css" />
-	<link rel="stylesheet" href="static/css/common.css" />
-	<link rel="stylesheet" href="static/css/home.css" />
+	<%@include file="../components/common-head.jsp" %>
 	<link rel="stylesheet" href="static/css/add.css" />
 	<link rel="stylesheet" href="static/editor/simplemde.min.css">
     </head>
@@ -17,7 +10,8 @@
     <body class="full-page flex flex-col">
 	<%@include  file="../components/navbar.jsp" %>
 	<div class="container flex-1">
-	    <% request.setAttribute("current-page", "add"); %>
+	    <% request.setAttribute("current-page", "add");
+		   %>
 	    <%@include  file="../components/side-menu.jsp" %>
 	    <main class="posts-container">
 		<form action="PostBlog" method="post" class="upload-container p30">
@@ -47,7 +41,7 @@
             let SME = new SimpleMDE({
                 element: contentEditor,
                 forceSync: true,
-           
+
             });
 
 
