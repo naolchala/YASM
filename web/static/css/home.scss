@@ -1,9 +1,10 @@
 *::-webkit-scrollbar {
 	width: 0px;
+	height: 10px;
 }
 *::-webkit-scrollbar-track {
 	background: var(--primary-light-bg);
-	padding: 10px;
+	padding: 5px;
 }
 *::-webkit-scrollbar-thumb {
 	background-color: var(--primary-light);
@@ -695,6 +696,59 @@
 			display: flex;
 			flex-direction: row;
 			gap: 20px;
+		}
+	}
+}
+
+.posts-container.search-page {
+	// padding: 10px;
+	gap: 0;
+
+	.friend-requests-container {
+		box-shadow: none;
+		margin: 0;
+
+		.sub-title {
+			font-size: 1em;
+			text-transform: capitalize;
+			font-family: "Rubik";
+			font-weight: normal;
+		}
+	}
+
+	.filters {
+		background-color: white;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 20px;
+		padding: 20px;
+		margin-bottom: 20px;
+		border-radius: 10px;
+
+		a {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 10px;
+			background-color: transparent;
+			padding: 8px 20px;
+			border-radius: 200px;
+			color: var(--primary);
+
+			&.selected {
+				background-color: var(--primary);
+				color: white;
+
+				&:hover {
+					border-color: var(--primary);
+					background-color: var(--primary);
+				}
+			}
+
+			&:hover {
+				background-color: var(--primary-light-bg);
+			}
 		}
 	}
 }

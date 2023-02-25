@@ -3,22 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/naol/Documents/Projects/Advanced%20Programming/YASM/src/java/Utils/ServletUtils.java</file>
-            <file>file:/home/naol/Documents/Projects/Advanced%20Programming/YASM/web/pages/home/components/notification.jsp</file>
-            <file>file:/home/naol/Documents/Projects/Advanced%20Programming/YASM/web/pages/auth/register.jsp</file>
-            <file>file:/home/naol/Documents/Projects/Advanced%20Programming/YASM/web/pages/home/add/story.html</file>
-            <file>file:/home/naol/Documents/Projects/Advanced%20Programming/YASM/web/pages/auth/login.jsp</file>
-            <file>file:/home/naol/Documents/Projects/Advanced%20Programming/YASM/web/pages/home/components/side-menu.jsp</file>
-            <file>file:/home/naol/Documents/Projects/Advanced%20Programming/YASM/web/pages/home/add/poll.jsp</file>
-            <file>file:/home/naol/Documents/Projects/Advanced%20Programming/YASM/web/pages/home/components/navbar.jsp</file>
-            <file>file:/home/naol/Documents/Projects/Advanced%20Programming/YASM/web/pages/home/add/story.jsp</file>
-            <file>file:/home/naol/Documents/Projects/Advanced%20Programming/YASM/src/java/Models/Comment.java</file>
-            <file>file:/home/naol/Documents/Projects/Advanced%20Programming/YASM/web/pages/home/index.jsp</file>
-            <file>file:/home/naol/Documents/Projects/Advanced%20Programming/YASM/web/pages/home/profile/update-profile.jsp</file>
-            <file>file:/home/naol/Documents/Projects/Advanced%20Programming/YASM/web/pages/home/add/blog.jsp</file>
-            <file>file:/home/naol/Documents/Projects/Advanced%20Programming/YASM/web/pages/home/post.jsp</file>
-            <file>file:/home/naol/Documents/Projects/Advanced%20Programming/YASM/web/pages/home/friends.jsp</file>
-            <file>file:/home/naol/Documents/Projects/Advanced%20Programming/YASM/web/pages/home/components/common-head.jsp</file>
+            <file>file:/home/naol/Documents/Projects/Advanced%20Programming/YASM/src/java/Servlets/Post/PostBlog.java</file>
+            <file>file:/home/naol/Documents/Projects/Advanced%20Programming/YASM/src/java/Servlets/PostPage.java</file>
+            <file>file:/home/naol/Documents/Projects/Advanced%20Programming/YASM/src/java/Servlets/Search.java</file>
+            <file>file:/home/naol/Documents/Projects/Advanced%20Programming/YASM/src/java/Servlets/Post/PostStory.java</file>
+            <file>file:/home/naol/Documents/Projects/Advanced%20Programming/YASM/src/java/Utils/FormValidator.java</file>
         </group>
     </open-files>
 </project-private>

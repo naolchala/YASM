@@ -143,6 +143,51 @@ public class Post {
 		return posts;
 	}
 	
+	public static ArrayList<Post> explore(int page) throws SQLException {
+		ArrayList<Post> posts = new ArrayList<Post>();
+		int take = 5;
+		int offset  = (page - 1) * take;
+		
+		String sql = "SELECT * FROM Posts, User WHERE "
+			+ "User.id = Posts.userId ORDER BY postedAt DESC LIMIT ?, ?";
+		PreparedStatement stmt = DBConnector.getPreparedStmt(sql);
+		stmt.setInt(1, offset);
+		stmt.setInt(2, take);
+		
+		ResultSet rs = stmt.executeQuery();
+		
+		while(rs.next()) {
+			PostTypes type = PostTypes.valueOf(rs.getString("type"));
+			
+			User poster = new User(rs);
+			poster.id = rs.getString("userId");
+			
+			Post p;
+			switch (type) {
+				case BLOG: {
+					p = Blog.getById(rs.getString("id"));
+					break;	
+				}
+				case STORY: {
+					p = Story.getById(rs.getString("id"));
+					break;
+				}
+				case POLL:{
+					p = Poll.getById(rs.getString("id"));
+					break;
+				}
+				default:
+					p = null;
+			}
+			
+			p.postedAt = rs.getTimestamp("postedAt");
+			p.postedBy = poster;
+			
+			posts.add(p);
+		}
+		
+		return posts;
+	}
 
 	
 	public void loadLikes() throws SQLException {

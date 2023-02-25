@@ -305,4 +305,19 @@ public class User {
 		return new User(rs);
 	}
 
+	public static ArrayList<User> search(String keyword) throws SQLException {
+		ArrayList<User> searchResults = new ArrayList<User>();
+		String sql = "SELECT * FROM User WHERE firstName LIKE ? OR lastName LIKE ?";
+		PreparedStatement stmt = DBConnector.getPreparedStmt(sql);
+		
+		stmt.setString(1,  keyword + "%");
+		stmt.setString(2, keyword + "%");
+		
+		ResultSet rs = stmt.executeQuery();
+		while (rs.next()) {
+			searchResults.add(new User(rs));
+		}
+		
+		return searchResults;
+	}
 }

@@ -46,12 +46,15 @@
 					}
 
 					pre {
+						padding: 20px;
 						font-size: smaller;
 						overflow: auto;
 						background-color: var(--gray-bg);
-						border: 1px solid var(--primary);
+						margin: 50px 0;
+						border-radius: 10px;
 						font-family: monospace !important;
 						white-space: pre;
+						line-height: 20px;
 					}
 				}
 			}
@@ -150,6 +153,7 @@
 				margin: 20px 0;
 				color: var(--primary);
 				p {
+					white-space: pre-line;
 					font-size: 18px;
 				}
 			}

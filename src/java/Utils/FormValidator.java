@@ -60,5 +60,13 @@ public class FormValidator {
 			throw new FormException(field, msg);
 		}
 	}
+	
+	public static String escapeContent(String content) {
+		content = content.replaceAll("<", "&lt;");
+		content = content.replaceAll(">", "&gt;");
+		content = content.replaceAll(String.valueOf('"'), "&qout;");
+		content = content.replaceAll("'", "&qout;");
+		return content;
+	}
 
 }

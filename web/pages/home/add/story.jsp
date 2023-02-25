@@ -3,6 +3,7 @@
 
     <head>
 	<%@include file="../components/common-head.jsp" %>
+	<link rel="stylesheet" href="static/css/add.css" />
     </head>
 
     <body class="full-page flex flex-col">

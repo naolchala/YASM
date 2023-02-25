@@ -41,12 +41,15 @@
   margin: 4px;
 }
 .posts-container .post.blog article .caption pre {
+  padding: 20px;
   font-size: smaller;
   overflow: auto;
   background-color: var(--gray-bg);
-  border: 1px solid var(--primary);
+  margin: 50px 0;
+  border-radius: 10px;
   font-family: monospace !important;
   white-space: pre;
+  line-height: 20px;
 }
 .posts-container .input-and-comments-wrapper {
   background-color: var(--gray-bg);
@@ -131,6 +134,7 @@
   color: var(--primary);
 }
 .posts-container .comments-wrapper .comment article p {
+  white-space: pre-line;
   font-size: 18px;
 }
 .posts-container .comments-wrapper .comment footer {

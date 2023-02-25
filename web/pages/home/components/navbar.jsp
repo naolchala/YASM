@@ -3,12 +3,12 @@
 <div class="header">
     <h1 class="title">YASM</h1>
     <div class="search-field-container">
-	<div class="search-field">
-	    <input placeholder="Search" type="text" />
+	<form action="Search" method="GET" class="search-field">
+	    <input placeholder="Search" value="${param["keyword"]}" type="text" name="keyword" />
 	    <button class="btn icon-btn search-btn">
 		<i class="bx bx-search-alt"></i>
 	    </button>
-	</div>
+	</form>
     </div>
     <div class="profile-tag">
 	<div class="p5 mr10 bg-primary-lighter flex align-center justify-center" style="border-radius: 100%">

@@ -39,6 +39,7 @@ public class PostBlog extends HttpServlet {
 		
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
+		content = FormValidator.escapeContent(content);
 		
 		try {
 			FormValidator.validateEmpty(title, "title", "Title for the blog is required!");

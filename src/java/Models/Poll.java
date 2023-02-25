@@ -116,5 +116,19 @@ public class Poll extends Post {
 
 		return false;
 	}
+	
+	public static ArrayList<Poll> search(String keyword) throws SQLException {
+		ArrayList<Poll> searchResults = new ArrayList<Poll>();
+		String sql = "SELECT * FROM Polls WHERE title LIKE '%?%'";
+		PreparedStatement stmt = DBConnector.getPreparedStmt(sql);
+		stmt.setString(1, keyword);
+		
+		ResultSet rs = stmt.executeQuery();
+		while (rs.next()) {
+			searchResults.add(new Poll(rs));
+		}
+		
+		return searchResults;
+	}
 
 }

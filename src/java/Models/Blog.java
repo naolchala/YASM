@@ -4,6 +4,7 @@ import Exceptions.UserDontExistException;
 import Models.Constants.PostTypes;
 import Utils.DBConnector;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class Blog extends Post {
@@ -50,6 +51,22 @@ public class Blog extends Post {
 		stmt.setString(3, this.content);
 		
 		stmt.executeUpdate();
+	}
+	
+	public static ArrayList<Blog> search(String keyword) throws SQLException, UserDontExistException {
+		ArrayList<Blog> searchResults = new ArrayList<Blog>();
+		String sql = "SELECT * FROM Polls WHERE title LIKE '%?%'";
+		PreparedStatement stmt = DBConnector.getPreparedStmt(sql);
+		stmt.setString(1, keyword);
+		
+		ResultSet rs = stmt.executeQuery();
+		while (rs.next()) {
+			Blog post = new Blog(rs);
+			post.postedBy = User.findById(rs.getString("postedBy"));
+			searchResults.add(new Blog(rs));
+		}
+		
+		return searchResults;
 	}
 }
 

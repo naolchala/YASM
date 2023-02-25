@@ -88,6 +88,14 @@
         <servlet-name>VoteComment</servlet-name>
         <servlet-class>Servlets.Post.VoteComment</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Search</servlet-name>
+        <servlet-class>Servlets.Search</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Explore</servlet-name>
+        <servlet-class>Servlets.Explore</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Index</servlet-name>
         <url-pattern>/</url-pattern>
@@ -188,5 +196,13 @@
     <servlet-mapping>
         <servlet-name>VoteComment</servlet-name>
         <url-pattern>/VoteComment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Search</servlet-name>
+        <url-pattern>/Search</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Explore</servlet-name>
+        <url-pattern>/Explore</url-pattern>
     </servlet-mapping>
 </web-app>

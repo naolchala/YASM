@@ -24,7 +24,7 @@
 		    class="text-center text-primary"
 		    >
 		Find your account, and by answering your security question, you
-		can reset your password, eneter your email bellow to find your
+		can reset your password, enter your email bellow to find your
 		account
 	    </p>
 	    <% UserDontExistException ex = request.getAttribute("formError") != null
