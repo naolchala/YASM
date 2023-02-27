@@ -42,7 +42,7 @@
 	</div>
 	<span>Friends</span>
     </a>
-    <a class="menu-item <%= current_page.equals("about") ? "selected" : "" %>">
+    <a href="AboutUs" class="menu-item <%= current_page.equals("about") ? "selected" : "" %>">
 	<div class="icon-container">
 	    <i class="bx bxs-face"></i>
 	</div>
@@ -62,7 +62,7 @@
 	<div
 		class="flex flex-row align-center flex-wrap justify-center flex-gap-10"
 		>
-	    <a href="#">About us</a>
+	    <a href="AboutUs">About us</a>
 	    <i class="bx bxs-circle"></i>
 	    <a href="#">Terms and Services</a>
 	    <i class="bx bxs-circle"></i>

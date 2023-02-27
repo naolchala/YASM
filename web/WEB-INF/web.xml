@@ -96,6 +96,10 @@
         <servlet-name>Explore</servlet-name>
         <servlet-class>Servlets.Explore</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AboutUs</servlet-name>
+        <servlet-class>Servlets.AboutUs</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Index</servlet-name>
         <url-pattern>/</url-pattern>
@@ -116,6 +120,7 @@
         <url-pattern>*.woff2</url-pattern>
         <url-pattern>*.ttf</url-pattern>
         <url-pattern>*.jpg</url-pattern>
+            <url-pattern>*.jpeg</url-pattern>
         <url-pattern>*.png</url-pattern>
         <url-pattern>*.svg</url-pattern>
         <url-pattern>*.ico</url-pattern>
@@ -204,5 +209,9 @@
     <servlet-mapping>
         <servlet-name>Explore</servlet-name>
         <url-pattern>/Explore</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AboutUs</servlet-name>
+        <url-pattern>/AboutUs</url-pattern>
     </servlet-mapping>
 </web-app>
